@@ -1,0 +1,87 @@
+const querySchema = {
+  id: {
+    min: 1,
+    type: 'number',
+    positive: true,
+    integer: true,
+    required: true,
+    max: 46
+  },
+  name: {
+    type: 'string',
+    minLength: 3,
+    maxLength: 50,
+    required: true,
+  },
+  gender: {
+    type: 'string',
+    minLength: 2,
+    maxLength: 6,
+    required: true,
+  },
+  birthMonth: {
+    type: 'number',
+    integer: true,
+    min: 1,
+    max: 12,
+    required: true,
+  },
+};
+
+function validateQuery(query) {
+  const errors = [];
+  for (const [param, rules] of Object.entries(querySchema)) {
+    // Check if parameter is present in query string
+    if (!(param in query)) {
+      continue;
+    }
+
+    // Check if parameter is required and missing
+    if (rules.required && (query[param] === undefined || query[param] === '')) {
+      console.log(query[param])
+      errors.push(`${param} is required`);
+      continue;
+    }
+
+    // Check if parameter is present and has the correct type
+    if (query[param] !== undefined && typeof query[param] !== rules.type) {
+      errors.push(`${param} must be of type ${rules.type}`);
+      continue;
+    }
+
+    // Check if parameter is a number and meets numeric rules
+    if (typeof query[param] === 'number') {
+      if (rules.integer && !Number.isInteger(query[param])) {
+        errors.push(`${param} must be an integer`);
+      }
+      else if (rules.positive && query[param] < 0) {
+        errors.push(`${param} must be greater than zero`);
+      }
+      else if (rules.min !== undefined && query[param] < rules.min) {
+        errors.push(`${param} must be greater than or equal to ${rules.min}`);
+      }
+      else if (rules.max !== undefined && query[param] > rules.max) {
+        errors.push(`${param} must be less than or equal to ${rules.max}`);
+      }
+    }
+
+    // Check if parameter is a string and meets string rules
+    else if (typeof query[param] === 'string') {
+      if (rules.minLength !== undefined && query[param].length < rules.minLength) {
+        errors.push(`${param} must have at least ${rules.minLength} characters`);
+      }
+      if (rules.maxLength !== undefined && query[param].length > rules.maxLength) {
+        errors.push(`${param} must have at most ${rules.maxLength} characters`);
+      }
+      if (!/^[A-Za-z]+$/.test(query[param])) {
+        errors.push(`${param} must contain only alphabetic characters`);
+      }
+    }    
+  }
+  return errors;
+}
+
+module.exports = {
+    validateQuery,
+    querySchema
+  };
