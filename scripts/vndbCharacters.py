@@ -16,7 +16,7 @@ db_user = os.getenv("DB_USER")
 db_password = os.getenv("DB_PASSWORD")
 db_database = os.getenv("DB_DATABASE")
 
-
+# DOCUMENT SOON
 mydb = mysql.connector.connect(
     host=db_host,
     user=db_user,
