@@ -5,10 +5,15 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 
+# This Py File is used to retrieve information about the Umineko Visual Novel Characters 
+# It does this by using the VNDB library 
+# After retreiving those characters it will us the MySQLConnector library to populate the Database with particular Data within the Character Objects
+
 vndb = VNDB()
 
 characters = vndb.get_all_character(Character.vn_id == 24)
 
+# Initialization of Necessary variables
 id = 1
 load_dotenv()
 db_host = os.getenv("DB_HOST")
@@ -16,7 +21,7 @@ db_user = os.getenv("DB_USER")
 db_password = os.getenv("DB_PASSWORD")
 db_database = os.getenv("DB_DATABASE")
 
-# DOCUMENT SOON
+# Establishing a connection to residing DataBase
 mydb = mysql.connector.connect(
     host=db_host,
     user=db_user,
@@ -26,6 +31,7 @@ mydb = mysql.connector.connect(
 # create a cursor object
 mycursor = mydb.cursor()
 
+# Function used to remove tags from the description which is given via the Character Object
 def remove_tags(description):
     # Replace [url=/c#] with an empty string
     description = re.sub(r'\[url=/c\d+\]', '', description)
@@ -33,7 +39,7 @@ def remove_tags(description):
     description = re.sub(r'\[/url\]', '', description)
     return description
 
-
+# Function used to clean text from the description
 def clean_text(text):
     # remove [Edited from [url=<...>]]
     text = re.sub(r'\[Edited from \[url=.*?\]\](.*?)\[/url\]\]', r'\1', text)
@@ -43,7 +49,7 @@ def clean_text(text):
     text = re.sub(r'\[.*?\]', '', text)
     return text
 
-
+# For Loop to go through all Characters given via previous VNDB query
 for character in characters:
     print("Id:", id)
     print("Character Name:", character.name)
@@ -73,6 +79,10 @@ for character in characters:
     #sql = "INSERT INTO uminekoapi.characters (id, name, img, description, age, gender, bloodType, monthOfBirth, dayOfBirth) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     #mycursor.execute(sql, (id, name, image, finalizedDesc, age, gender, bloodType, monthOfBirth, dayOfBirth))
     id = id + 1
+
+
+# Second for loop for quotes, however does not contain enough information regarding the quotes
+# looking for a second option, however this format is a secondary/backup option
 
 #for quote in quotes:
     #print("Quote Id:", quoteId)

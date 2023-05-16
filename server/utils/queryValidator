@@ -1,3 +1,7 @@
+// This is the querySchema for the Characters, essentially specifies 
+// particular attributes for each parameter within a schema,
+// this is then used to measure a parameter's validity within the
+// validateQuery function below
 const querySchema = {
   id: {
     min: 1,
@@ -27,7 +31,8 @@ const querySchema = {
     required: true,
   },
 };
-
+// Function to check whether the attributes of parameters within a request 
+// match it's designated schema's rules...
 function validateQuery(query) {
   const errors = [];
   for (const [param, rules] of Object.entries(querySchema)) {

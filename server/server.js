@@ -5,6 +5,7 @@ const express = require('express');
 const characterRouter = require('./routes');
 const app = express();
 
+// Establishes MiddleWare
 app.use(express.json());
 app.use('/api/umineko/characters', characterRouter);
 app.listen(process.env.PORT || '3000', () => {

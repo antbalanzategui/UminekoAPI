@@ -5,6 +5,16 @@ const queryValidator = require('../utils/queryValidator');
 querySchema = queryValidator.querySchema;
 validateQuery = queryValidator.validateQuery;
 
+// This file contains essentially everything 
+// related to the MiddleWare for Express
+// Currently only consists of get requests
+// Plan to potentially create a register system for a key
+// which would require a post middleware route
+
+
+// This is a function which converts the id parameter within the query
+// or the birthMonth parameter within the query to integer
+// the reason this is done is to easily evaluate inequalities with the parameter
 const convertToInt = (req, res, next) => {
   if (req.query.id) {
     req.query.id = parseInt(req.query.id);
@@ -14,7 +24,7 @@ const convertToInt = (req, res, next) => {
   }
   next();
 };
-// KEEP IN MIND THE yOU MUST HAVE THE QUESTION MARK HERE TO COVER THE CASE OF = ''
+// MiddleWare for the /id, utilizes querySchema (check utils for more info)
 router.get('/id=:id?', async (req, res, next) => {
 
   if (!req.params.id) {
@@ -35,7 +45,7 @@ router.get('/id=:id?', async (req, res, next) => {
       res.sendStatus(500);
   }
 });
-
+// MiddleWare for the /name, utilizes querySchema
 router.get('/name=:name?', async(req, res, next) => {
   if (!req.params.name) {
     return res.status(400).json({ error: 'Missing "name" parameter. Please include an "name" parameter in the request URL.' })
@@ -55,7 +65,7 @@ router.get('/name=:name?', async(req, res, next) => {
       res.sendStatus(500);
   }
 });
-
+// MiddleWare for the /gender, utilizes querySchema
 router.get('/gender=:gender?', async(req, res, next) => {
   if (!req.params.gender) {
     return res.status(400).json({ error: 'Missing "gender" parameter. Please include an "gender" parameter in the request URL.' })
@@ -74,7 +84,7 @@ router.get('/gender=:gender?', async(req, res, next) => {
     res.sendStatus(500);
   }
 });
-  
+// MiddleWare for the /birthMonth, utilizes querySchema
 router.get('/birthMonth=:birthMonth?', async(req, res, next) => {
   if (!req.params.birthMonth) {
     return res.status(400).json({ error: 'Missing "birthMonth" parameter. Please include an "birthMonth" parameter in the request URL.' })
@@ -98,7 +108,7 @@ router.get('/birthMonth=:birthMonth?', async(req, res, next) => {
 
 // localhost:3000/api/umineko/characters?name=shi&id=1 // 
 
-
+// MiddleWare for the query search...
 router.get('/', convertToInt, async (req, res, next) => {
 
     const errors = validateQuery(req.query);

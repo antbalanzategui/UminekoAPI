@@ -7,6 +7,9 @@ import os
 from dotenv import load_dotenv
 import mysql.connector
 
+# This Python file is used to retrieve video data from videos within a particular youtube playlist
+# it then iterates through the each video and retrieves particular data to send to a database using the MySQL.connector library
+
 load_dotenv()
 db_host = os.getenv("DB_HOST")
 db_user = os.getenv("DB_USER")
@@ -31,6 +34,7 @@ playlist_id = "PLWCkhGoFcFiykjjC8UtB20DoVMWgVyQIL"
 next_page_token = None
 video_data = []
 
+# Creates the Connection Object
 mydb = mysql.connector.connect(
     host=db_host,
     user=db_user,
@@ -40,7 +44,8 @@ mydb = mysql.connector.connect(
 # create a cursor object
 mycursor = mydb.cursor()
 
-
+# These are web images, which are supposed to represent the thumbnails which were used within the Youtube Videos
+# Naturally the Youtube API has this feature however the quality of the thumbnails were not up to par, hence we use these
 ep1Image = "https://static.wikia.nocookie.net/umineko/images/1/1c/Beatrice-0.png/revision/latest/scale-to-width-down/1200?cb=20190318021940"
 ep2Image = "https://static.wikia.nocookie.net/umineko/images/4/4a/HumanBeatricePortrait.png/revision/latest/scale-to-width-down/1200?cb=20200505070744"
 ep3Image = "https://static.wikia.nocookie.net/umineko/images/6/6f/EVA-Beatrice.jpg/revision/latest/scale-to-width-down/1200?cb=20190318023221"
@@ -50,6 +55,7 @@ ep6Image = "https://static.wikia.nocookie.net/umineko/images/7/7a/BattlerPortrai
 ep7Image = "https://static.wikia.nocookie.net/umineko/images/d/de/WillardLionPortrait.jpg/revision/latest/scale-to-width-down/1200?cb=20200505070756"
 ep8Image = "https://static.wikia.nocookie.net/topstrongest/images/9/94/Umi_ep8.jpg/revision/latest?cb=20190202010329"
 
+# Creation of a Dictionary, which will allow us to map each Image to a particular Episode, which is determined by the Video's "Episode" attribute below
 imgUrls = {
     "Episode 1": "https://static.wikia.nocookie.net/umineko/images/1/1c/Beatrice-0.png/revision/latest/scale-to-width-down/1200?cb=20190318021940",
     "Episode 2": "https://static.wikia.nocookie.net/umineko/images/4/4a/HumanBeatricePortrait.png/revision/latest/scale-to-width-down/1200?cb=20200505070744",
@@ -60,7 +66,6 @@ imgUrls = {
     "Episode 7": "https://static.wikia.nocookie.net/umineko/images/d/de/WillardLionPortrait.jpg/revision/latest/scale-to-width-down/1200?cb=20200505070756",
     "Episode 8": "https://static.wikia.nocookie.net/topstrongest/images/9/94/Umi_ep8.jpg/revision/latest?cb=20190202010329"
 }
-
 while True:
     request = youtube.playlistItems().list(
         part="snippet",
@@ -75,7 +80,8 @@ while True:
         break
 
 idForDB = 1
-# Parse the video data to extract the video title, video ID, and video link
+# Parse the video data to extract the video title, video ID, and video link, for all videos, utilizes the mapping discussed earlier, ensures
+# that none of the values or None aswell...
 for video in video_data:
     videoId = video["snippet"]["resourceId"]["videoId"]
     title = video["snippet"]["title"]
