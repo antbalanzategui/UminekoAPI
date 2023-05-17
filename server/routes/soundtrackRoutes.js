@@ -17,11 +17,11 @@ router.get('/id=:id?', async (req, res, next) => {
         return;
       }
       try{
-          let results = await db.soundtrackById(req.params.id);
-          res.json(results);
+        let results = await db.soundtrackById(req.params.id);
+        res.json(results);
       } catch(e) {
-          console.log(e);
-          res.sendStatus(500);
+        console.log(e);
+        res.sendStatus(500);
       }
   });
 
@@ -37,11 +37,11 @@ router.get('/title=:title?', async (req, res, next) => {
       }
     
       try {
-          let results = await db.soundtrackByTitle(req.params.title)
-          res.json(results);
+        let results = await db.soundtrackByTitle(req.params.title)
+        res.json(results);
       } catch (e) {
-          console.log(e);
-          res.sendStatus(500);
+        console.log(e);
+        res.sendStatus(500);
       }
 });
 
@@ -57,13 +57,39 @@ router.get('/composer=:composer?', async (req, res, next) => {
       }
     
       try {
-          let results = await db.soundtrackByComposer(req.params.composer)
-          res.json(results);
+        let results = await db.soundtrackByComposer(req.params.composer)
+        res.json(results);
       } catch (e) {
-          console.log(e);
-          res.sendStatus(500);
+        console.log(e);
+        res.sendStatus(500);
       }
 });
+
+router.get('/episode=:episode?', async (req, res, next) => {
+    if (!req.params.episode) {
+        return res.status(400).json({ error: 'Missing "episode" parameter. Please include an "episode" parameter in the request URL.' })
+      }
+      const keptString = req.params.episode;
+      req.params.episode = parseInt(req.params.episode);
+      const errors = validateQuery(req.params, soundTrackSchema);
+    
+      if (errors.length > 0) {
+        res.status(400).json({ errors });
+        return;
+      }
+      try{
+        const queryString = "Episode " + keptString;
+        console.log(queryString);
+        let results = await db.soundtrackByEpisode(queryString);
+        res.json(results);
+      } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+      }
+  });
+
+
+
 
 
 
