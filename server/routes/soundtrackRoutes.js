@@ -4,6 +4,8 @@ const db = require('../db/soundtrackDB');
 const queryValidator = require('../utils/queryValidator');
 soundTrackSchema = queryValidator.soundTrackSchema;
 validateQuery = queryValidator.validateQuery;
+const paramConverter = require('../utils/paramConverter');
+const convertToInt = paramConverter.convertToInt;
 
 router.get('/id=:id?', async (req, res, next) => {
     if (!req.params.id) {
@@ -88,9 +90,28 @@ router.get('/episode=:episode?', async (req, res, next) => {
       }
   });
 
+  router.get('/', convertToInt, async (req, res, next) => {
 
+    const errors = validateQuery(req.query, soundTrackSchema);
 
+    if (errors.length > 0) {
+      res.status(400).json({ errors });
+      return;
+    }
 
-
+    if(req.query.episode) {
+        const keptString = (req.query.episode).toString();
+        const queryString = "Episode " + keptString;
+        req.query.episode = queryString;
+    }
+  
+    try {
+      let results = await db.soundtrackByQuery(req.query);
+      res.json(results);
+    } catch (e) {
+      console.log(e);
+      res.sendStatus(500);
+    }
+  });
 
   module.exports = router;

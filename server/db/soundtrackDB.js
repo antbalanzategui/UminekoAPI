@@ -66,7 +66,7 @@ stDB.soundtrackByQuery = (queryParams) => {
     }
     if (queryParams.episode) {
         query += " AND episode = ?"
-        values.push(queryParams.birthMonth);
+        values.push(queryParams.episode);
     }
     return new Promise((resolve, reject) => {
         pool.query(query, values, (err, results) => {
