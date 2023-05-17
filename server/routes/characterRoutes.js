@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db');
+const db = require('../db/characterDB');
 const queryValidator = require('../utils/queryValidator');
-querySchema = queryValidator.querySchema;
-validateQuery = queryValidator.validateQuery;
+const characterSchema = queryValidator.characterSchema;
+const validateQuery = queryValidator.validateQuery;
 
 // This file contains essentially everything 
 // related to the MiddleWare for Express
@@ -31,7 +31,7 @@ router.get('/id=:id?', async (req, res, next) => {
     return res.status(400).json({ error: 'Missing "id" parameter. Please include an "id" parameter in the request URL.' })
   }
   req.params.id = parseInt(req.params.id);
-  const errors = validateQuery(req.params);
+  const errors = validateQuery(req.params, characterSchema);
 
   if (errors.length > 0) {
     res.status(400).json({ errors });
@@ -50,7 +50,7 @@ router.get('/name=:name?', async(req, res, next) => {
   if (!req.params.name) {
     return res.status(400).json({ error: 'Missing "name" parameter. Please include an "name" parameter in the request URL.' })
   }
-  const errors = validateQuery(req.params);
+  const errors = validateQuery(req.params, characterSchema);
 
   if (errors.length > 0) {
     res.status(400).json({ errors });
@@ -70,7 +70,7 @@ router.get('/gender=:gender?', async(req, res, next) => {
   if (!req.params.gender) {
     return res.status(400).json({ error: 'Missing "gender" parameter. Please include an "gender" parameter in the request URL.' })
   }
-  const errors = validateQuery(req.params);
+  const errors = validateQuery(req.params, characterSchema);
 
   if (errors.length > 0) {
     res.status(400).json({ errors });
@@ -90,7 +90,7 @@ router.get('/birthMonth=:birthMonth?', async(req, res, next) => {
     return res.status(400).json({ error: 'Missing "birthMonth" parameter. Please include an "birthMonth" parameter in the request URL.' })
   }
   req.params.birthMonth = parseInt(req.params.birthMonth);
-  const errors = validateQuery(req.params);
+  const errors = validateQuery(req.params, characterSchema);
 
   if (errors.length > 0) {
     res.status(400).json({ errors });
@@ -111,7 +111,7 @@ router.get('/birthMonth=:birthMonth?', async(req, res, next) => {
 // MiddleWare for the query search...
 router.get('/', convertToInt, async (req, res, next) => {
 
-    const errors = validateQuery(req.query);
+    const errors = validateQuery(req.query, characterSchema);
 
   
     if (errors.length > 0) {
