@@ -4,6 +4,9 @@ const db = require('../db/characterDB');
 const queryValidator = require('../utils/queryValidator');
 const characterSchema = queryValidator.characterSchema;
 const validateQuery = queryValidator.validateQuery;
+const paramConverter = require('../utils/paramConverter');
+const convertToInt = paramConverter.convertToInt;
+
 
 // This file contains essentially everything 
 // related to the MiddleWare for Express
@@ -15,15 +18,7 @@ const validateQuery = queryValidator.validateQuery;
 // This is a function which converts the id parameter within the query
 // or the birthMonth parameter within the query to integer
 // the reason this is done is to easily evaluate inequalities with the parameter
-const convertToInt = (req, res, next) => {
-  if (req.query.id) {
-    req.query.id = parseInt(req.query.id);
-  }
-  if (req.query.birthMonth) {
-    req.query.birthMonth = parseInt(req.query.birthMonth);
-  }
-  next();
-};
+
 // MiddleWare for the /id, utilizes querySchema (check utils for more info)
 router.get('/id=:id?', async (req, res, next) => {
 
