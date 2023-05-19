@@ -6,6 +6,8 @@ const characterSchema = queryValidator.characterSchema;
 const validateQuery = queryValidator.validateQuery;
 const paramConverter = require('../utils/paramConverter');
 const convertToInt = paramConverter.convertToInt;
+const queryHandler = require('../utils/queryHandler');
+const handleQuery = queryHandler.handleQuery;
 
 
 // This file contains essentially everything 
@@ -26,19 +28,7 @@ router.get('/id=:id?', async (req, res, next) => {
     return res.status(400).json({ error: 'Missing "id" parameter. Please include an "id" parameter in the request URL.' })
   }
   req.params.id = parseInt(req.params.id);
-  const errors = validateQuery(req.params, characterSchema);
-
-  if (errors.length > 0) {
-    res.status(400).json({ errors });
-    return;
-  }
-  try{
-      let results = await db.characterById(req.params.id);
-      res.json(results);
-  } catch(e) {
-      console.log(e);
-      res.sendStatus(500);
-  }
+  await handleQuery(req, res, next, db.characterById.bind(null, req.params.id), req.params);
 });
 // MiddleWare for the /name, utilizes querySchema
 router.get('/name=:name?', async(req, res, next) => {
@@ -113,7 +103,6 @@ router.get('/', convertToInt, async (req, res, next) => {
       res.status(400).json({ errors });
       return;
     }
-  
     try {
       let results = await db.characterByQuery(req.query);
       res.json(results);

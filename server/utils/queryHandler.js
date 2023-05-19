@@ -1,11 +1,8 @@
-async function handleQuery(req, res, next, queryFunction, queryObj) {
-    const errors = validateQuery(queryObj, soundTrackSchema);
-  
-    if (req.query.episode) {
-      const keptString = (req.query.episode).toString();
-      const queryString = "Episode " + keptString;
-      req.query.episode = queryString;
-    }
+const queryValidator = require('../utils/queryValidator');
+const validateQuery = queryValidator.validateQuery;
+
+async function handleQuery(req, res, next, queryFunction, queryObj, querySchema) {
+    const errors = validateQuery(queryObj, querySchema);
     if (errors.length > 0) {
       res.status(400).json({ errors });
       return;
