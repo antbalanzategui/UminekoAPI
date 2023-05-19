@@ -31,7 +31,7 @@ const characterSchema = {
     required: true,
   },
 };
-
+// This is the querySchema for the SoundTrack query
 const soundTrackSchema = {
   id: {
     min: 1,
