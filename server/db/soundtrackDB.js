@@ -61,7 +61,7 @@ stDB.soundtrackByQuery = (queryParams) => {
     }
 
     if (queryParams.composer) {
-        query += " AND composer = ?";
+        query += " AND composer LIKE CONCAT('%', ?, '%')";
         values.push(queryParams.composer);
     }
     if (queryParams.episode) {
