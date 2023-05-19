@@ -28,46 +28,21 @@ router.get('/id=:id?', async (req, res, next) => {
     return res.status(400).json({ error: 'Missing "id" parameter. Please include an "id" parameter in the request URL.' })
   }
   req.params.id = parseInt(req.params.id);
-  await handleQuery(req, res, next, db.characterById.bind(null, req.params.id), req.params);
+  await handleQuery(req, res, next, db.characterById.bind(null, req.params.id), req.params, characterSchema);
 });
 // MiddleWare for the /name, utilizes querySchema
 router.get('/name=:name?', async(req, res, next) => {
   if (!req.params.name) {
     return res.status(400).json({ error: 'Missing "name" parameter. Please include an "name" parameter in the request URL.' })
   }
-  const errors = validateQuery(req.params, characterSchema);
-
-  if (errors.length > 0) {
-    res.status(400).json({ errors });
-    return;
-  }
-
-  try {
-      let results = await db.characterByName(req.params.name)
-      res.json(results);
-  } catch (e) {
-      console.log(e);
-      res.sendStatus(500);
-  }
+  await handleQuery(req, res, next, db.characterByName.bind(null, req.params.name), req.params, characterSchema);
 });
 // MiddleWare for the /gender, utilizes querySchema
 router.get('/gender=:gender?', async(req, res, next) => {
   if (!req.params.gender) {
     return res.status(400).json({ error: 'Missing "gender" parameter. Please include an "gender" parameter in the request URL.' })
   }
-  const errors = validateQuery(req.params, characterSchema);
-
-  if (errors.length > 0) {
-    res.status(400).json({ errors });
-    return;
-  }
-  try {
-    let results = await db.characterByGender(req.params.gender)
-    res.json(results);
-  } catch(e) {
-    console.log(e);
-    res.sendStatus(500);
-  }
+  await handleQuery(req, res, next, db.characterByGender.bind(null, req.params.gender), req.params, characterSchema);
 });
 // MiddleWare for the /birthMonth, utilizes querySchema
 router.get('/birthMonth=:birthMonth?', async(req, res, next) => {
@@ -75,19 +50,7 @@ router.get('/birthMonth=:birthMonth?', async(req, res, next) => {
     return res.status(400).json({ error: 'Missing "birthMonth" parameter. Please include an "birthMonth" parameter in the request URL.' })
   }
   req.params.birthMonth = parseInt(req.params.birthMonth);
-  const errors = validateQuery(req.params, characterSchema);
-
-  if (errors.length > 0) {
-    res.status(400).json({ errors });
-    return;
-  }
-  try {
-      let results = await db.characterByBirthMonth(req.params.birthMonth)
-      res.json(results);
-  } catch(e) {
-      console.log(e);
-      res.sendStatus(500);
-  }
+  await handleQuery(req, res, next, db.characterByBirthMonth.bind(null, req.params.birthMonth), req.params, characterSchema);
 });
 
 
@@ -95,21 +58,7 @@ router.get('/birthMonth=:birthMonth?', async(req, res, next) => {
 
 // MiddleWare for the query search...
 router.get('/', convertToInt, async (req, res, next) => {
-
-    const errors = validateQuery(req.query, characterSchema);
-
-  
-    if (errors.length > 0) {
-      res.status(400).json({ errors });
-      return;
-    }
-    try {
-      let results = await db.characterByQuery(req.query);
-      res.json(results);
-    } catch (e) {
-      console.log(e);
-      res.sendStatus(500);
-    }
+  await handleQuery(req, res, next, db.characterByQuery, req.query, characterSchema);
   });
   
   
