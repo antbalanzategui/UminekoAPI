@@ -1,0 +1,17 @@
+.logo {
+    width: 32px;
+    height: 32px;
+}
+
+.navbar-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between; /* Spread the items evenly */
+    width: 100%; /* Fill up the entire width */
+  }
+  
+  .navbar-list li {
+    flex-grow: 1; /* Distribute the available space evenly */
+    margin-right: 10px; /* Adjust the spacing between list items */
+  }
+  
