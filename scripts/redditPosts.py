@@ -2,7 +2,6 @@ import requests
 import os
 from dotenv import load_dotenv
 import pandas as pd
-import datetime
 
 load_dotenv()
 app_id = os.getenv("APP_ID")
@@ -23,25 +22,38 @@ headers['Authorization'] = 'bearer {}'.format(token)
 requests.get('https://oauth.reddit.com/api/v1/me', headers=headers)
 
 api = 'https://oauth.reddit.com'
-res = requests.get('{}/r/umineko/new'.format(api), headers=headers, params={'limit': '100'})
-res_json = res.json()
+df = pd.DataFrame(columns=['name', 'title', 'selftext', 'score'])
 
-data = []
-for post in res_json['data']['children']:
-    data.append({
-        'name': post['data']['name'],
-        'title': post['data']['title'],
-        'selftext': post['data']['selftext'],
-        'score': post['data']['score'],
-        'upvote_ratio': post['data']['upvote_ratio'],
-        'num_comments': post['data']['num_comments'],
-        'author': post['data']['author'],
-        'created_utc': post['data']['created_utc'],
-        'permalink': post['data']['permalink'],
-        'subreddit': post['data']['subreddit'],
-        'url': post['data']['url']
-    })
+after = None
+while True:
+    print("Fetching posts...")
+    params = {'limit': '10000'}
+    if after:
+        params['after'] = after
+    res = requests.get('{}/r/umineko/new'.format(api), headers=headers, params=params)
+    if len(res.json()['data']['children']) == 0:
+        print('No more posts found')
+        break
+    new_data = []
+    for index, post in enumerate(res.json()['data']['children'], start=len(df) + 1):
+        new_data.append({
+            'post_number': index,
+            'name': post['data']['name'],
+            'title': post['data']['title'],
+            'selftext': post['data']['selftext'],
+            'score': post['data']['score'],
+            'upvote_ratio': post['data']['upvote_ratio'],
+            'num_comments': post['data']['num_comments'],
+            'author': post['data']['author'],
+            'created_utc': post['data']['created_utc'],
+            'permalink': post['data']['permalink'],
+            'subreddit': post['data']['subreddit'],
+            'url': post['data']['url']
+        })
+        print(f"Appended post {index}: {post['data']['title']}")
+    df = pd.concat([df, pd.DataFrame(new_data)])
+    after = res.json()['data']['children'][-1]['data']['name']
 
-df = pd.DataFrame(data)
+# Save DataFrame to JSON file with formatted indentation
 df.to_json('reddit_posts.json', orient='records', indent=4)
-print("Data saved to reddit_posts.json")
+print("Script execution complete.")
