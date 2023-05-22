@@ -6,6 +6,7 @@ import Projects from "./Projects";
 import NoPage from "./NoPage";
 import Project from "./Project"
 import Documentation from "./Documentation"
+import Contact from "./Contact"
 
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="documentation" element={<Documentation />} />
           <Route path="projects" element={<Projects />} />
           <Route path="/projects/:id" element={<Project />} />
+          <Route path="/contact" element={<Contact/>}/>
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
