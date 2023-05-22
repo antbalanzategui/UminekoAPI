@@ -1,8 +1,110 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
 .IntroDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 300px;
+}
+
+.h3container {
+  margin-top: 30px;
+}
+
+.FeatureSection {
+  margin-top: 50px; /* Increase the top margin to create space */
+  margin-left: 3%;
+}
+
+.UminekoName {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typewriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0; /* Adjust as needed */
+  animation: typing 7s steps(40, end) infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  0% { width: 0; }
+  50% { width: 100%; }
+  100% { width: 0; }
+}
+
+.featureHeader {
+  display: flex; 
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.featureHeader h1 {
+  margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+  grid-template-rows: repeat(2, 1fr); /* 2 rows for larger screens */
+  grid-gap: 75px; /* Adjust the gap between grid items */
+}
+
+.gridItem {
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 90%;
+  text-align: center;
+}
+
+.inverted-icon {
+  color: white;
+  background-color: black;
+  border-radius: 50%;
+}
+
+@media (max-width: 1068px) {
+  .FeatureSection {
+    margin-top: 50px; /* Increase the top margin to create space */
+    margin-left: 0px;
   }
+  .page-container {
+    align-items: center;
+  }
+  .gridItem {
+    width: 40vw;
+  }
+  /* Medium size screens */
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+    grid-template-rows: repeat(3, 1fr); /* 3 rows for medium screens */
+  }
+  .FeatureSection {
+    margin-left: 0px;
+  }
+  .featureHeader {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .gridItem {
+    width: 55vw;
+  }
+  .page-container {
+    align-items: center;
+  }
+  /* Smaller screens */
+  .featuresGrid {
+    grid-template-columns: 1fr; /* 1 column for smaller screens */
+    grid-template-rows: repeat(6, 1fr); /* 6 rows for smaller screens */
+  }
+  .FeatureSection {
+    margin-left: 0px;
+  }
+}

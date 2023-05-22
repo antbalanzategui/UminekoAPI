@@ -1,7 +1,9 @@
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-    width: 101%;
-    margin-left: -0.5%;
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 .logo {
@@ -17,7 +19,6 @@ body {
   }
   
   .navbar-list li {
-
     flex-grow: 1; /* Distribute the available space evenly */
     display: flex;
     justify-content: center;
@@ -38,8 +39,6 @@ body {
     left: 0; /* Ensure it starts from the left edge of the screen */
   }
 
-  
-
   .HomeDiv {
     display: flex; 
     align-items: center;
@@ -49,10 +48,19 @@ body {
     text-align: center;
   }
 
+  button {
+    background-color: inherit;
+    border: none;
+  }
+
   [data-theme="light"] {
     /* Light mode styles */
     background-color: #ffffff;
     color: #000000;
+  }
+
+  [data-theme="dark"] button {
+    color: white;
   }
   
   [data-theme="dark"] {
@@ -60,6 +68,7 @@ body {
     background-color: #000000;
     color: #ffffff;
   }
+
   
   
   
