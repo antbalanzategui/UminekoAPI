@@ -8,6 +8,7 @@ const paramConverter = require('../utils/paramConverter');
 const convertToInt = paramConverter.convertToInt;
 const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
+const characterSchemaQuery = queryValidator.characterSchemaQuery;
 
 
 // This file contains essentially everything 
@@ -58,7 +59,7 @@ router.get('/birthMonth=:birthMonth?', async(req, res, next) => {
 
 // MiddleWare for the query search...
 router.get('/', convertToInt, async (req, res, next) => {
-  await handleQuery(req, res, next, db.characterByQuery, req.query, characterSchema);
+  await handleQuery(req, res, next, db.characterByQuery, req.query, characterSchemaQuery);
   });
   
   

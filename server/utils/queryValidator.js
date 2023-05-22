@@ -2,6 +2,7 @@
 // particular attributes for each parameter within a schema,
 // this is then used to measure a parameter's validity within the
 // validateQuery function below
+
 const characterSchema = {
   id: {
     min: 1,
@@ -24,6 +25,50 @@ const characterSchema = {
     required: true,
   },
   birthMonth: {
+    type: 'number',
+    integer: true,
+    min: 1,
+    max: 12,
+    required: true,
+  },
+};
+const characterSchemaQuery = {
+  idStart: {
+    min: 1,
+    type: 'number',
+    positive: true,
+    integer: true,
+    required: true,
+    max: 46
+  },
+  idEnd: {
+    min: 1,
+    type: 'number',
+    positive: true,
+    integer: true,
+    required: true,
+    max: 46
+  },
+  name: {
+    type: 'string',
+    minLength: 3,
+    maxLength: 50,
+    required: true,
+  },
+  gender: {
+    type: 'string',
+    minLength: 2,
+    maxLength: 6,
+    required: true,
+  },
+  birthMonthStart: {
+    type: 'number',
+    integer: true,
+    min: 1,
+    max: 12,
+    required: true,
+  },
+  birthMonthEnd: {
     type: 'number',
     integer: true,
     min: 1,
@@ -65,6 +110,14 @@ const soundTrackSchema = {
 // match it's designated schema's rules...
 function validateQuery(query, querySchema) {
   const errors = [];
+  const allowedParams = Object.keys(querySchema);
+
+  for (const param in query) {
+    if (!allowedParams.includes(param)) {
+      errors.push(`Invalid parameter: ${param}`);
+    }
+  }
+  
   for (const [param, rules] of Object.entries(querySchema)) {
     // Check if parameter is present in query string
     if (!(param in query)) {
@@ -73,7 +126,6 @@ function validateQuery(query, querySchema) {
 
     // Check if parameter is required and missing
     if (rules.required && (query[param] === undefined || query[param] === '')) {
-      console.log(query[param])
       errors.push(`${param} is required`);
       continue;
     }
@@ -98,8 +150,17 @@ function validateQuery(query, querySchema) {
       else if (rules.max !== undefined && query[param] > rules.max) {
         errors.push(`${param} must be less than or equal to ${rules.max}`);
       }
+      if (param === 'idStart' && query['idEnd'] !== undefined && query[param] > query['idEnd']) {
+        errors.push(`idStart cannot be greater than idEnd`);
+      } else if (param === 'idEnd' && query['idStart'] !== undefined && query[param] < query['idStart']) {
+        errors.push(`idEnd cannot be less than idStart`);
+      }
+      if (param === 'birthMonthStart' && query['birthMonthEnd'] !== undefined && query[param] > query['birthMonthEnd']) {
+        errors.push(`birthMonthStart cannot be greater than birthMonthEnd`);
+      } else if (param === 'birthMonthEnd' && query['birthMonthStart'] !== undefined && query[param] < query['birthMonthStart']) {
+        errors.push(`birthMonthEnd cannot be less than birthMonthStart`);
+      }
     }
-
     // Check if parameter is a string and meets string rules
     else if (typeof query[param] === 'string') {
       if (rules.minLength !== undefined && query[param].length < rules.minLength) {
@@ -119,5 +180,6 @@ function validateQuery(query, querySchema) {
 module.exports = {
     validateQuery,
     characterSchema,
-    soundTrackSchema
+    soundTrackSchema,
+    characterSchemaQuery,
   };

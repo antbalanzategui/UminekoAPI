@@ -58,36 +58,57 @@ charDB.characterByBirthMonth = (birthMonth) => {
 // This is capable of everything which the previous iterations are capable of
 // I made this after all previous queries were made, and decided to keep them for sake of logic
 charDB.characterByQuery = (queryParams) => {
-    // This intialization of query statement allows characters?, where no 
-    // parameters are assigned to return the same as characters/
     let query = "SELECT * FROM uminekoapi.characters WHERE 1 = 1";
     let values = [];
-    if (queryParams.id) {
-        query += " AND id = ?";
-        values.push(queryParams.id);
+  
+    if (queryParams.idStart && queryParams.idEnd) {
+      query += " AND id BETWEEN ? AND ?";
+      values.push(queryParams.idStart);
+      values.push(queryParams.idEnd);
+    } else if (queryParams.idStart) {
+      query += " AND id BETWEEN ? AND ?";
+      values.push(queryParams.idStart);
+      values.push(46);
+    } else if (queryParams.idEnd) {
+      query += " AND id BETWEEN ? AND ?";
+      values.push(1);
+      values.push(queryParams.idEnd);
     }
-
+  
     if (queryParams.name) {
-        query += " AND name LIKE CONCAT('%', ?, '%')";
-        values.push(queryParams.name);
+      query += " AND name LIKE CONCAT('%', ?, '%')";
+      values.push(queryParams.name);
     }
-
+  
     if (queryParams.gender) {
-        query += " AND gender = ?";
-        values.push(queryParams.gender);
+      query += " AND gender = ?";
+      values.push(queryParams.gender);
     }
-    if (queryParams.birthMonth) {
-        query += " AND birthMonth = ?"
-        values.push(queryParams.birthMonth);
+  
+    if (queryParams.birthMonthStart && queryParams.birthMonthEnd) {
+      query += " AND birthMonth BETWEEN ? AND ?";
+      values.push(queryParams.birthMonthStart);
+      values.push(queryParams.birthMonthEnd);
+    } else if (queryParams.birthMonthStart) {
+      query += " AND birthMonth BETWEEN ? AND ?";
+      values.push(queryParams.birthMonthStart);
+      values.push(12);
+    } else if (queryParams.birthMonthEnd) {
+      query += " AND birthMonth BETWEEN ? AND ?";
+      values.push(1);
+      values.push(queryParams.birthMonthEnd);
     }
+  
     return new Promise((resolve, reject) => {
-        pool.query(query, values, (err, results) => {
-            if (err) {
-                return reject(err)
-            }
-            return resolve(results);
-        });
+      pool.query(query, values, (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      });
     });
-};
+  };
+  
+
 
 module.exports = charDB;
