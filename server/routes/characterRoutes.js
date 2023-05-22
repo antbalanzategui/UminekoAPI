@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/characterDB');
-const queryValidator = require('../utils/queryValidator');
-const characterSchema = queryValidator.characterSchema;
-const validateQuery = queryValidator.validateQuery;
+const characterSchemas = require('../utils/schemas/characterSchemas');
+const characterSchema = characterSchemas.characterSchema;
 const paramConverter = require('../utils/paramConverter');
 const convertToInt = paramConverter.convertToInt;
 const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
-const characterSchemaQuery = queryValidator.characterSchemaQuery;
+const characterSchemaQuery = characterSchemas.characterSchemaQuery;
 
 
 // This file contains essentially everything 

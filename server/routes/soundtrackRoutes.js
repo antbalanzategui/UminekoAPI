@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/soundtrackDB');
-const queryValidator = require('../utils/queryValidator');
-const soundTrackSchema = queryValidator.soundTrackSchema;
+const soundTrackSchemas = require('../utils/schemas/soundtrackSchemas');
+const soundTrackSchema = soundTrackSchemas.soundTrackSchema;
 const paramConverter = require('../utils/paramConverter');
 const convertToInt = paramConverter.convertToInt;
 const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
-const soundTrackSchemaQuery = queryValidator.soundTrackSchemaQuery;
+const soundTrackSchemaQuery = soundTrackSchemas.soundTrackSchemaQuery;
 
 // This establishes the data which we will get when we call soundtrack/id=? 
 // we will fetch data from the database of the soundtrack where id is = ?
