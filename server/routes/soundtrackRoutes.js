@@ -7,6 +7,7 @@ const paramConverter = require('../utils/paramConverter');
 const convertToInt = paramConverter.convertToInt;
 const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
+const soundTrackSchemaQuery = queryValidator.soundTrackSchemaQuery;
 
 // This establishes the data which we will get when we call soundtrack/id=? 
 // we will fetch data from the database of the soundtrack where id is = ?
@@ -47,7 +48,7 @@ router.get('/episode=:episode?', async (req, res, next) => {
 // This combines all the previous queries methods into one, in which
 // allows for users to simultaneously query multiple parameters
 router.get('/', convertToInt, async (req, res, next) => {
-    await handleQuery(req, res, next, db.soundtrackByQuery, req.query, soundTrackSchema);
+    await handleQuery(req, res, next, db.soundtrackByQuery, req.query, soundTrackSchemaQuery);
   });
 
   module.exports = router;

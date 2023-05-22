@@ -77,6 +77,50 @@ const characterSchemaQuery = {
   },
 };
 // This is the querySchema for the SoundTrack query
+const soundTrackSchemaQuery = {
+  idStart: {
+    min: 1,
+    type: 'number',
+    positive: true,
+    integer: true,
+    required: true,
+    max: 208
+  },
+  idEnd: {
+    min: 1,
+    type: 'number',
+    positive: true,
+    integer: true,
+    required: true,
+    max: 208
+  },
+  title: {
+    type: 'string',
+    minLength: 3,
+    maxLength: 50,
+    required: true,
+  },
+  composer: {
+    type: 'string',
+    minLength: 3,
+    maxLength: 50,
+    required: true,
+  },
+  episodeStart: {
+    type: 'number',
+    integer: true,
+    min: 1,
+    max: 8,
+    required: true,
+  },
+  episodeEnd: {
+    type: 'number',
+    integer: true,
+    min: 1,
+    max: 8,
+    required: true,
+  }
+};
 const soundTrackSchema = {
   id: {
     min: 1,
@@ -160,6 +204,11 @@ function validateQuery(query, querySchema) {
       } else if (param === 'birthMonthEnd' && query['birthMonthStart'] !== undefined && query[param] < query['birthMonthStart']) {
         errors.push(`birthMonthEnd cannot be less than birthMonthStart`);
       }
+      if (param === 'episodeStart' && query['episodeEnd'] !== undefined && query[param] > query['episodeEnd']) {
+        errors.push(`episodeStart cannot be greater than episodeEnd`);
+      } else if (param === 'episodeEnd' && query['episodeStart'] !== undefined && query[param] < query['episodeStart']) {
+        errors.push(`episodeEnd cannot be less than episodeStart`);
+      }
     }
     // Check if parameter is a string and meets string rules
     else if (typeof query[param] === 'string') {
@@ -182,4 +231,5 @@ module.exports = {
     characterSchema,
     soundTrackSchema,
     characterSchemaQuery,
+    soundTrackSchemaQuery
   };

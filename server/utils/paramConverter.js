@@ -23,6 +23,12 @@ const convertToInt = (req, res, next) => {
     if (req.query.episode) {
         req.query.episode = parseInt(req.query.episode);
     }
+    if (req.query.episodeStart) {
+      req.query.episodeStart = parseInt(req.query.episodeStart);
+    }
+    if (req.query.episodeEnd) {
+      req.query.episodeEnd = parseInt(req.query.episodeEnd);
+    }
     next();
   };
 

@@ -50,11 +50,19 @@ stDB.soundtrackByQuery = (queryParams) => {
     // parameters are assigned to return the same as characters/
     let query = "SELECT * FROM uminekoapi.soundtrack WHERE 1 = 1";
     let values = [];
-    if (queryParams.id) {
-        query += " AND id = ?";
-        values.push(queryParams.id);
+    if (queryParams.idStart && queryParams.idEnd) {
+        query += " AND id BETWEEN ? AND ?";
+        values.push(queryParams.idStart);
+        values.push(queryParams.idEnd);
+    } else if (queryParams.idStart) {
+        query += " AND id BETWEEN ? AND ?";
+        values.push(queryParams.idStart);
+        values.push(208);
+    } else if (queryParams.idEnd) {
+        query += " AND id BETWEEN ? AND ?";
+        values.push(1);
+        values.push(queryParams.idEnd);
     }
-
     if (queryParams.title) {
         query += " AND title LIKE CONCAT('%', ?, '%')";
         values.push(queryParams.title);
@@ -64,9 +72,18 @@ stDB.soundtrackByQuery = (queryParams) => {
         query += " AND composer LIKE CONCAT('%', ?, '%')";
         values.push(queryParams.composer);
     }
-    if (queryParams.episode) {
-        query += " AND episode = ?"
-        values.push(queryParams.episode);
+    if (queryParams.episodeStart && queryParams.episodeEnd) {
+        query += " AND episode BETWEEN ? AND ?";
+        values.push(queryParams.episodeStart);
+        values.push(queryParams.episodeEnd);
+    } else if (queryParams.episodeStart) {
+        query += " AND episode BETWEEN ? AND ?";
+        values.push(queryParams.episodeStart);
+        values.push(8);
+    } else if (queryParams.episodeEnd) {
+        query += " AND episode BETWEEN ? AND ?";
+        values.push(1);
+        values.push(queryParams.birthMonthEnd);
     }
     return new Promise((resolve, reject) => {
         pool.query(query, values, (err, results) => {
