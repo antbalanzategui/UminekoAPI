@@ -44,7 +44,7 @@ const Header = () => {
             <Link to="/documentation">Documentation</Link>
           </li>
           <li>
-            <Link to="/projects">Projects</Link>
+            <Link to="/showcase">Showcase</Link>
           </li>
           <li>
             <IconButton onClick={toggleLightMode}>

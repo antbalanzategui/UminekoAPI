@@ -57,14 +57,14 @@ ep8Image = "https://static.wikia.nocookie.net/topstrongest/images/9/94/Umi_ep8.j
 
 # Creation of a Dictionary, which will allow us to map each Image to a particular Episode, which is determined by the Video's "Episode" attribute below
 imgUrls = {
-    "1": "https://static.wikia.nocookie.net/umineko/images/1/1c/Beatrice-0.png/revision/latest/scale-to-width-down/1200?cb=20190318021940",
-    "2": "https://static.wikia.nocookie.net/umineko/images/4/4a/HumanBeatricePortrait.png/revision/latest/scale-to-width-down/1200?cb=20200505070744",
-    "3": "https://static.wikia.nocookie.net/umineko/images/6/6f/EVA-Beatrice.jpg/revision/latest/scale-to-width-down/1200?cb=20190318023221",
+    "1": "https://pbs.twimg.com/media/EVlz8TXX0AAgM4n?format=jpg&name=medium",
+    "2": "https://d2qdztz5tk5zxi.cloudfront.net/original/1X/91b43da64701c53be1444079e43a3be4d6ecec44.jpg",
+    "3": "https://d2qdztz5tk5zxi.cloudfront.net/original/1X/5e822aba42240681a8cc905076167c9ba805fdd3.jpg",
     "4": "https://d2qdztz5tk5zxi.cloudfront.net/original/1X/aaa573e12b48d10f00fcbdb273cb6ce91f45b201.jpg",
-    "5": "https://static.wikia.nocookie.net/umineko/images/c/c1/ErikaPortrait.jpg/revision/latest/scale-to-width-down/1200?cb=20200505074456",
-    "6": "https://static.wikia.nocookie.net/umineko/images/7/7a/BattlerPortrait.jpg/revision/latest/scale-to-width-down/1200?cb=20200505075217",
-    "7": "https://static.wikia.nocookie.net/umineko/images/d/de/WillardLionPortrait.jpg/revision/latest/scale-to-width-down/1200?cb=20200505070756",
-    "8": "https://static.wikia.nocookie.net/topstrongest/images/9/94/Umi_ep8.jpg/revision/latest?cb=20190202010329"
+    "5": "https://i.redd.it/1c9s85618sk51.jpg",
+    "6": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4fe006ef-2ed2-48d6-a5b4-362d5fd1a399/de9ea1p-b04ba0bc-9926-472e-b6c8-0c00ded38ae4.jpg/v1/fill/w_749,h_1067,q_70,strp/battler_ushiromiya___portrait_by_alonik_de9ea1p-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTgyMiIsInBhdGgiOiJcL2ZcLzRmZTAwNmVmLTJlZDItNDhkNi1hNWI0LTM2MmQ1ZmQxYTM5OVwvZGU5ZWExcC1iMDRiYTBiYy05OTI2LTQ3MmUtYjZjOC0wYzAwZGVkMzhhZTQuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ymd52aLOR2qHe31HL34VEnTW9XJbCRUI2wPeWcUYY_Y",
+    "7": "https://d2qdztz5tk5zxi.cloudfront.net/original/1X/e5ec929dbbbd5f256db97e0f4bda26721796818e.jpg",
+    "8": "https://pbs.twimg.com/media/Eoie7-EVEAAR8de?format=jpg&name=medium"
 }
 while True:
     request = youtube.playlistItems().list(

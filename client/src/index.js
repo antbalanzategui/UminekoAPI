@@ -2,9 +2,9 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
-import Projects from "./Projects";
+import Showcase from "./Showcase";
 import NoPage from "./NoPage";
-import Project from "./Project"
+import SoundTrackDisplay from "./SoundTrackDisplay"
 import Documentation from "./Documentation"
 import Contact from "./Contact"
 
@@ -16,8 +16,8 @@ export default function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route path="documentation" element={<Documentation />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="/projects/:id" element={<Project />} />
+          <Route path="showcase" element={<Showcase/>} />
+          <Route path="/soundtrack/:id" element={<SoundTrackDisplay />} />
           <Route path="/contact" element={<Contact/>}/>
           <Route path="*" element={<NoPage />} />
         </Route>
