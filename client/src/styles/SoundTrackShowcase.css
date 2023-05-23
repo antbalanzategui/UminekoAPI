@@ -13,6 +13,7 @@
 .cardImage {
     position: relative;
     max-height: 80%;
+    border: solid black 5px;
 }
 
 

@@ -38,7 +38,7 @@ const SoundTrackShowcase = () => {
             <Card
               sx={{ marginBottom: 2, cursor: 'pointer' }}
             >
-              <div class="cardImage">
+
               <CardMedia
               sx={{
                 height: "80%",
@@ -49,8 +49,8 @@ const SoundTrackShowcase = () => {
                 alt={episode.title}
                 onMouseOver={(e) => { e.currentTarget.src = episode.hoverImageUrl }} // Change the image on hover
                 onMouseOut={(e) => { e.currentTarget.src = episode.imageUrl }} // Revert to the original image on mouse out
+                className="cardImage"
               />
-              </div>
               <CardContent>
                 <Typography variant="h6">{episode.title}</Typography>
                 <Typography variant="body2">{episode.description}</Typography>
