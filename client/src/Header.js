@@ -3,6 +3,7 @@ import { MarkGithubIcon } from '@primer/octicons-react';
 import { Sun, Moon } from 'react-feather';
 import './styles/Header.css';
 import { useState, useEffect } from 'react';
+import IconButton from '@mui/material/IconButton';
 
 const Header = () => {
   const [isLightMode, setIsLightMode] = useState(false);
@@ -46,16 +47,18 @@ const Header = () => {
             <Link to="/projects">Projects</Link>
           </li>
           <li>
-            <button onClick={toggleLightMode}>
+            <IconButton onClick={toggleLightMode}>
               {isLightMode ? <Moon size={32} /> : <Sun size={32} />}
               {/* Moon/Sun icon */}
-            </button>
+            </IconButton>
           </li>
           <li>
+            <IconButton>
             <a href="https://github.com/antbalanzategui/UminekoAPI" target="_blank" rel="noopener noreferrer">
               <MarkGithubIcon size={32} />
               {/* GitHub icon */}
             </a>
+            </IconButton>
           </li>
         </ul>
       </nav>
