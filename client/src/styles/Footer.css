@@ -6,13 +6,13 @@
     background-color: #f2f2f2;
     padding: 20px;
     margin-top: 50px;
+    height: 60px;
   }
   
   .footer-content {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
   }
   
@@ -45,6 +45,5 @@
   .footer-social a {
     text-decoration: none;
     color: #333;
-    margin-left: 10px;
   }
   
