@@ -12,7 +12,7 @@ const path = require('path');
 app.use(express.json());
 app.use(cors())
 
-app.use(express.static(path.join(__dirname, '../public/images')));
+app.use('/api', express.static(path.join(__dirname, '../public/images')));
 
 app.use('/api/umineko/characters', characterRouter);
 app.use('/api/umineko/soundtrack', soundtrackRouter);
