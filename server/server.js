@@ -6,10 +6,13 @@ const characterRouter = require('./routes/characterRoutes');
 const soundtrackRouter = require('./routes/soundtrackRoutes');
 const app = express();
 const cors = require('cors')
+const path = require('path');
 
 // Establishes MiddleWare
 app.use(express.json());
 app.use(cors())
+
+app.use(express.static(path.join(__dirname, '../public/images')));
 
 app.use('/api/umineko/characters', characterRouter);
 app.use('/api/umineko/soundtrack', soundtrackRouter);
