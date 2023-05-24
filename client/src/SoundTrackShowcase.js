@@ -7,29 +7,23 @@ const SoundTrackShowcase = () => {
   const [episodeData, setEpisodeData] = useState([]); // Declare projectData state
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/umineko/soundtrack?')
-      .then((response) => response.json())
-      .then((data) => {
-        const desiredIds = [1, 48, 65, 91, 117, 145, 172, 197]; // Specify the desired ids here
-        
-        const filteredData = data.filter(item => desiredIds.includes(item.id));
-
-        const descArr = ["Legend of the Golden Witch", "Turn of the Golden Witch", "Banquet of the Golden Witch",
-      "Alliance of the Golden Witch", "End of the Golden Witch", "Dawn of the Golden Witch", "Requiem of the Golden Witch", "Twilight of the Golden Witch"]
-
-        // Create the projectData array with the filtered items
-        const formattedData = filteredData.map((item, index) => ({
-          id: index + 1,
-          title: `Episode ${item.episode}`,
-          description: descArr[index],
-          imageUrl: item.thumbnail,
-          hoverImageUrl: `/portraits/episode${index + 1}Portrait.jpg`,
-        }));        
-        // Update the projectData state with the formatted data
-        setEpisodeData(formattedData);
-        console.log(formattedData);
-      });
+    const desiredIds = [1, 48, 65, 91, 117, 145, 172, 197]; // Specify the desired ids here
+    const descArr = ["Legend of the Golden Witch", "Turn of the Golden Witch", "Banquet of the Golden Witch",
+      "Alliance of the Golden Witch", "End of the Golden Witch", "Dawn of the Golden Witch", "Requiem of the Golden Witch", "Twilight of the Golden Witch"];
+  
+    const formattedData = desiredIds.map((id, index) => ({
+      id: index + 1,
+      title: `Episode ${index + 1}`,
+      description: descArr[index],
+      imageUrl: `http://localhost:3001/api/thumbnail${index + 1}.jpg`,
+      hoverImageUrl: `/portraits/episode${index + 1}Portrait.jpg`,
+    }));
+  
+    // Update the episodeData state with the formatted data
+    setEpisodeData(formattedData);
+    console.log(formattedData);
   }, []);
+  
 
   return (
     <div>
