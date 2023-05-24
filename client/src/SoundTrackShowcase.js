@@ -14,11 +14,14 @@ const SoundTrackShowcase = () => {
         
         const filteredData = data.filter(item => desiredIds.includes(item.id));
 
+        const descArr = ["Legend of the Golden Witch", "Turn of the Golden Witch", "Banquet of the Golden Witch",
+      "Alliance of the Golden Witch", "End of the Golden Witch", "Dawn of the Golden Witch", "Requiem of the Golden Witch", "Twilight of the Golden Witch"]
+
         // Create the projectData array with the filtered items
         const formattedData = filteredData.map((item, index) => ({
           id: index + 1,
           title: `Episode ${item.episode}`,
-          description: `Description for Episode ${index + 1}`,
+          description: descArr[index],
           imageUrl: item.thumbnail,
           hoverImageUrl: `/portraits/episode${index + 1}Portrait.jpg`,
         }));        
