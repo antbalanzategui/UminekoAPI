@@ -30,7 +30,7 @@ const SoundTrackShowcase = () => {
 
   return (
     <div>
-      <h1>Episode 1 - 8</h1>
+      <h1 className = "stsHeader">Episode 1 - 8</h1>
       <div className="card-grid">
         {episodeData.map((episode) => (
           <Link to={`/soundtrack/${episode.id}`} key={episode.id}>
