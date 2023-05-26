@@ -4,6 +4,8 @@ import { Sun, Moon } from 'react-feather';
 import './styles/Header.css';
 import { useState, useEffect } from 'react';
 import IconButton from '@mui/material/IconButton';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
 
 const Header = () => {
   const [isLightMode, setIsLightMode] = useState(false);
@@ -28,7 +30,56 @@ const Header = () => {
     setIsLightMode(prevMode => !prevMode);
   };
 
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+  components: {
+    // Name of the component
+    MuiButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          '&:hover': {
+            border: '1.5px solid',
+            borderImage: 'linear-gradient(to right, #eeaeca, #94bbe9) 1',
+            borderImageSlice: 1,
+          },
+        },
+      },
+    },
+  },
+});
+
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#000000',
+    },
+  },
+  components: {
+    // Name of the component
+    MuiButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          '&:hover': {
+            border: '1.5px solid',
+            borderImage: 'linear-gradient(to right, #fcb045, #fd1d1d) 1',
+            borderImageSlice: 1,
+          },
+        },
+      },
+    },
+  },
+});
+
+
   return (
+    <ThemeProvider theme={isLightMode ? lightTheme : darkTheme}>
+    <CssBaseline />
     <>
       <nav className = "sticky-navbar">
         <ul className='navbar-list'>
@@ -65,6 +116,7 @@ const Header = () => {
 
       <Outlet />
     </>
+    </ThemeProvider>
   );
 };
 

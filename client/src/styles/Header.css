@@ -27,7 +27,7 @@ body {
 
   .navbar-list li a {
     text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit the color from parent */
+    color: inherit;
   }
   .sticky-navbar {
     padding-top: 1%;
@@ -35,9 +35,10 @@ body {
     top: 0;
     z-index: 100;
     height: 60px;
-    background-color: grey;
+    background-color: #f2f2f2;
     width: 100%; /* Set the width to 100% */
     left: 0; /* Ensure it starts from the left edge of the screen */
+    opacity: 97%;
   }
 
   .HomeDiv {
@@ -47,11 +48,6 @@ body {
   
   .UmiSpan {
     text-align: center;
-  }
-
-  button {
-    background-color: inherit;
-    border: none;
   }
 
   [data-theme="light"] {
@@ -66,9 +62,20 @@ body {
   
   [data-theme="dark"] {
     /* Dark mode styles */
-    background-color: #000000;
+    background-color: rgba(14, 10, 6);
     color: #ffffff;
   }
+
+  [data-theme="dark"] .sticky-navbar {
+
+    background-color: rgba(14, 10, 6);
+    opacity: 99%;
+
+  }
+
+
+
+
 
   
   

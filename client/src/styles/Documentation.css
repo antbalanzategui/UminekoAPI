@@ -3,6 +3,17 @@
     display: flex;
 }
 
+
+
+.navbar li a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the color from parent */
+  }
+
+  .docsButton.active a {
+    font-weight: bold;
+  }
+
 ul {
     list-style-type: none;
   }
@@ -15,6 +26,10 @@ ul {
 .navHolder {
     flex: 25%;
     background-color: white;
+    height: 100%;
+    position: absolute;
+    position: sticky;
+    top: 60px; 
 }
 
 .navbar {
@@ -23,8 +38,9 @@ ul {
     text-align: left;
     background-color: white;
     position: absolute;
-    height: calc(100vh - 120px); /* Subtract the height of the sticky header */
     width: 100%;
+    overflow: hidden;
+    
 }
 
 .headerNav {
@@ -32,11 +48,19 @@ ul {
     top: 60px;
     background-color: #f1f1f1;
     z-index: 100;
+    
   }
   
   .content {
-    flex: 75%;
+    flex: 70%;
     margin-top: 60px;
+    padding-left: 5%;
+    border-left: 2.5px solid;
+    border-image: repeating-linear-gradient(to top, #fcb045, #fd1d1d 20%) 1;
+}
+
+[data-theme="dark"] .content {
+    border-image: repeating-linear-gradient(to top, #eeaeca, #94bbe9 20%) 1;
 }
   
 .content-section {
@@ -50,6 +74,15 @@ html {
 }
 
 
+[data-theme="dark"] .navbar {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+[dark-theme="dark"] .navHolder {
+    flex: 25%;
+    background-color: #121212;
+}
 
 @media (max-width: 1068px) {
 

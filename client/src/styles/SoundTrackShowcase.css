@@ -8,11 +8,11 @@
 .card-container {
     width: 20vw;
     height: 100%;
+    position: relative;
 }
 
 .cardImage {
     position: relative;
-    max-height: 850px;
     border: solid black 0px;
 }
 

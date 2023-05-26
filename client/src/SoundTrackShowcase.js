@@ -30,17 +30,12 @@ const SoundTrackShowcase = () => {
       <h1 className = "stsHeader">Episode 1 - 8</h1>
       <div className="card-grid">
         {episodeData.map((episode) => (
-          <Link to={`/soundtrack/${episode.id}`} key={episode.id}>
+          <Link to={`/soundtrack/${episode.id}`} key={episode.id} style={{ textDecoration: 'none' }}>
             <div className="card-container">
-            <Card
+            <Card className="episodeCard"
               sx={{ marginBottom: 2, cursor: 'pointer' }}
             >
-
-              <CardMedia
-              sx={{
-                height: "80%",
-                transition: 'padding 0.2s', // Add a transition for a smooth effect
-              }}
+              <CardMedia sx = {{height: "80%",}}
                 component="img"
                 image={episode.imageUrl}
                 alt={episode.title}

@@ -3,8 +3,21 @@ import './styles/Home.css';
 import {Star, Users, Headphones, Calendar,  Image, MessageCircle} from 'react-feather';
 import { Card, CardContent, Typography} from '@mui/material';
 import { FaReddit } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
+
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <div>
     <div className="page-container">
@@ -32,7 +45,11 @@ const Home = () => {
         <h1>Features</h1>
         </div>
         <div className="featuresGrid">
-      <Card className="gridItem">
+      <Card className="gridItem cardWithBorder"  
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      sx={{ borderRadius: '4px' }}
+      >
         <CardContent>
           <Users size={24} />
           <Typography variant="h5" component="h2">
@@ -42,8 +59,13 @@ const Home = () => {
             Access to All Characters Within the Visual Novel
           </Typography>
         </CardContent>
+        {isHovered && 
+        <div
+          className="gradientBorder"
+        />
+      }
       </Card>
-      <Card className="gridItem">
+      <Card className="gridItem" sx={{ borderRadius: '4px' }}>
         <CardContent>
           <Headphones size = {24}/>
           <Typography variant="h5" component="h2">
@@ -54,7 +76,7 @@ const Home = () => {
           </Typography>
         </CardContent>
       </Card>
-      <Card className="gridItem">
+      <Card className="gridItem" sx={{ borderRadius: '4px' }}>
         <CardContent>
           <Calendar size = {24}/>
           <Typography variant="h5" component="h2">
@@ -65,7 +87,7 @@ const Home = () => {
           </Typography>
         </CardContent>
       </Card>
-      <Card className="gridItem">
+      <Card className="gridItem" sx={{ borderRadius: '4px' }}>
         <CardContent>
           <Image size = {24}/>
           <Typography variant="h5" component="h2">
@@ -76,7 +98,7 @@ const Home = () => {
           </Typography>
         </CardContent>
       </Card>
-      <Card className="gridItem">
+      <Card className="gridItem" sx={{ borderRadius: '4px' }}> 
         <CardContent>
           <MessageCircle size = {24}/>
           <Typography variant="h5" component="h2">
@@ -87,7 +109,7 @@ const Home = () => {
           </Typography>
         </CardContent>
       </Card>
-      <Card className="gridItem">
+      <Card className="gridItem" sx={{ borderRadius: '4px' }}>
         <CardContent>
         <div className="card-icon">
           <FaReddit className="inverted-icon" size={24} />
