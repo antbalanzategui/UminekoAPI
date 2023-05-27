@@ -30,10 +30,11 @@ const ImageSwapper = () => {
       scaleMultiplier = 0.6;
     }
 
-    const canvasWidth = screenWidth * scaleMultiplier;
+    let canvasWidth = screenWidth * scaleMultiplier;
     let canvasHeight = window.innerHeight * scaleMultiplier;
     if (screenWidth > 1200) {
       canvasHeight = canvasHeight * 1.5;
+      canvasWidth = canvasWidth * 0.8;
     }
     p.resizeCanvas(canvasWidth, canvasHeight);
     reloadAndResizeImages(p, canvasWidth, canvasHeight);
@@ -61,11 +62,12 @@ const ImageSwapper = () => {
       scaleMultiplier = 0.6;
     }
 
-    const canvasWidth = screenWidth * scaleMultiplier;
+    let canvasWidth = screenWidth * scaleMultiplier;
     
     let canvasHeight = window.innerHeight * scaleMultiplier;
     if (screenWidth > 1200) {
       canvasHeight = canvasHeight * 1.5;
+      canvasWidth = canvasWidth * 0.8;
     }
 
     p.createCanvas(canvasWidth, canvasHeight).parent(canvasRef.current);
