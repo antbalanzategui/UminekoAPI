@@ -49,8 +49,10 @@ const SoundTrackDisplay = () => {
 
   return (
     <div>
+      <div className="showcaseHeader">
       <h1>{`Episode: ${episodeData[0].episode}`}</h1>
       <div>The Following is Simply a Way to Use the API to Decorate a WebPage using the SoundTrack Route</div>
+      </div>
       <div className="carouselContainer">
       <Carousel showArrows={true} className="carousel">
         {episodeData.map((episode) => (

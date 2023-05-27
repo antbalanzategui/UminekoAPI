@@ -4,6 +4,9 @@ import {Star, Users, Headphones, Calendar,  Image, MessageCircle} from 'react-fe
 import { Card, CardContent, Typography} from '@mui/material';
 import { FaReddit } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import ImageSketch from './ImageSketch';
+
+import p5 from 'p5';
 
 const Home = () => {
 
@@ -38,6 +41,9 @@ const Home = () => {
           <h3>SoundTrack, Characters, Computer Graphics, Timeline, and Quotes</h3>
         </span>
         </div>
+      </div>
+      <div className="canvasHolder">
+      <ImageSketch/>
       </div>
       <div className ="FeatureSection">
         <div className = "featureHeader">

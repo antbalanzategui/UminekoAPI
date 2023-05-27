@@ -105,6 +105,13 @@
 [data-theme="dark"] .gridItem:before {
   border-image-source: linear-gradient(to right, #eeaeca, #94bbe9);
 }
+.canvasHolder {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
 
 @media (max-width: 1068px) {
   .FeatureSection {
