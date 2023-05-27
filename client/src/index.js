@@ -17,7 +17,10 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="documentation" element={<Documentation />} />
           <Route path="showcase" element={<Showcase/>} />
-          <Route path="/soundtrack/:id" element={<SoundTrackDisplay />} />
+          <Route
+            path="/soundtrack/:id"
+            element={<SoundTrackDisplay />}
+          />
           <Route path="/contact" element={<Contact/>}/>
           <Route path="*" element={<NoPage />} />
         </Route>
@@ -25,6 +28,5 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
