@@ -96,8 +96,8 @@ const ImageSwapper = () => {
       }
     } else if (p.frameCount - currentFrame >= frameDelay) {
       // Swap multiple random sections of the image after the delay
-      const numSwaps = 10; // Number of sections to be swapped
-      const sectionSize = 150; // Size of each section
+      const numSwaps = 100; // Number of sections to be swapped
+      const sectionSize = 12; // Size of each section
 
       for (let i = 0; i < numSwaps; i++) {
         let section1X = p.random(0, img.width - sectionSize);
