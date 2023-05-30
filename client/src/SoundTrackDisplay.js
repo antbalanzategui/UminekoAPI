@@ -17,7 +17,7 @@ const SoundTrackDisplay = () => {
     if (desiredIds.includes(parsedId)) {
       const fetchEpisodeData = async () => {
         try {
-          const response = await fetch(`http://localhost:3001/api/umineko/soundtrack/episode=${id}`);
+          const response = await fetch(`http://localhost:3001/api/soundtrack/episode=${id}`);
           if (!response.ok) {
             throw new Error('Failed to fetch episode data');
           }
