@@ -14,8 +14,8 @@ app.use(cors())
 
 app.use('/api', express.static(path.join(__dirname, '../public/images')));
 
-app.use('/api/umineko/characters', characterRouter);
-app.use('/api/umineko/soundtrack', soundtrackRouter);
+app.use('/api/characters', characterRouter);
+app.use('/api/soundtrack', soundtrackRouter);
 
 app.listen(process.env.PORT || '3001', () => {
     console.log(`Sever is running on port: ${process.env.PORT || '3001'}`);
