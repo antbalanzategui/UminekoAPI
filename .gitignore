@@ -4,3 +4,4 @@ scripts/.env
 scripts/secret
 server/.env
 client/node_modules
+public
