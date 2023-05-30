@@ -117,7 +117,7 @@ image_tags = [
     ['8', 'Battler', 'Beatrice', 'CG'],
     ['8', 'Battler', 'Beatrice', 'CG'],
     ['8', 'Tohya', 'Ikuko', 'CG'],
-    ['8', 'Kyrie', 'Rudolf', 'Ange', 'Battler'],
+    ['8', 'Kyrie', 'Rudolf', 'Ange', 'Battler', 'CG'],
     ['5', 'Erika', 'CG'],
     ['3', 'EVA', 'CG'],
     ['8', 'Featherine', 'CG'],
