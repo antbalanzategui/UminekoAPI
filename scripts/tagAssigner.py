@@ -142,10 +142,16 @@ mydb = mysql.connector.connect(
 # create a cursor object
 mycursor = mydb.cursor()
 
+modified_urls = ['api/media/' + url.split('api/images/')[1] for url in image_urls]
+
+# Print the modified URLs
+for url in modified_urls:
+    print(url)
+
 
 for i in range(len(image_urls)):
     id = i + 1
-    url = websiteURL + image_urls[i]
+    url = websiteURL + modified_urls[i]
     tags = image_tags[i]
     episode = int(tags[0]) if tags[0].isdigit() else None
     characters = ', '.join(tags[1:-1]) if len(tags) > 2 else tags[1]
