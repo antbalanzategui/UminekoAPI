@@ -13,8 +13,8 @@ const ImageSwapper = () => {
 
   const preload = (p) => {
     // Load your image here
-    img = p.loadImage('http://localhost:3001/api/thumbnail1.jpg');
-    originalImg = p.loadImage('http://localhost:3001/api/thumbnail1.jpg');
+    img = p.loadImage('http://localhost:3001/api/media/thumbnail1.jpg');
+    originalImg = p.loadImage('http://localhost:3001/api/media/thumbnail1.jpg');
   };
 
   const resizeCanvas = () => {
@@ -41,11 +41,11 @@ const ImageSwapper = () => {
   };
 
   const reloadAndResizeImages = (p, canvasWidth, canvasHeight) => {
-    img = p.loadImage('http://localhost:3001/api/thumbnail1.jpg', () => {
+    img = p.loadImage('http://localhost:3001/api/media/thumbnail1.jpg', () => {
       img.resize(canvasWidth, canvasHeight, p.RESIZEMODE_NEAREST);
     });
 
-    originalImg = p.loadImage('http://localhost:3001/api/thumbnail1.jpg', () => {
+    originalImg = p.loadImage('http://localhost:3001/api/media/thumbnail1.jpg', () => {
       originalImg.resize(canvasWidth, canvasHeight, p.RESIZEMODE_NEAREST);
     });
   };
