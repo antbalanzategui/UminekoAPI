@@ -35,7 +35,7 @@ router.get('/episode=:episode?', async (req, res, next) => {
       await handleQuery(req, res, next, db.imageByEpisode.bind(null, req.params.episode), req.params, imageSchema);
 });
 
-
+// localhost:3001/api/images?characters[]=Battler&characters[]=123&characters[]=Ange&episodeStart=8&type=Graphic&idStart=46
 router.get('/', convertToInt, async (req, res, next) => {
     await handleQuery(req, res, next, db.imageByQuery, req.query, imageSchemaQuery);
     });
