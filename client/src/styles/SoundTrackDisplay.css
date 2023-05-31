@@ -1,5 +1,6 @@
 .carouselContainer {
-    max-width: 800px;
+    max-width: 1200px;
+    min-width: 200px;
     margin: 0 auto;
 }
 
@@ -12,7 +13,24 @@
     padding-bottom: 25px;
 }
 
+
+
 iframe {
-    height: 50vh;
+    height: 90vh;
     min-height: 300px;
+    width: 90%;
+}
+
+.graphicContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200%;
+}
+
+.graphic-image {
+    height: 100%;
+    width: 50%;
+    min-height: 300px;
+    
 }
