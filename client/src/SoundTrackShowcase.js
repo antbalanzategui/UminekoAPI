@@ -23,7 +23,7 @@ const SoundTrackShowcase = () => {
       id: index + 1,
       title: `Episode ${index + 1}`,
       description: descArr[index],
-      imageUrl: `http://localhost:3001/api/thumbnail${index + 1}.jpg`,
+      imageUrl: `http://localhost:3001/api/media/thumbnail${index + 1}.jpg`,
       hoverImageUrl: `/portraits/episode${index + 1}Portrait.jpg`,
       isHovered: false // Add a new property to track hover state per card
     }));
