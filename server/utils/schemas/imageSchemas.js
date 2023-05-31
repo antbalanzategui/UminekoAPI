@@ -15,13 +15,14 @@ const imageSchemaQuery = {
       required: true,
       max: 208
     },
-    title: {
-      type: 'string',
-      minLength: 3,
+    characters: {
+      type: 'array',
+      minLength: 1,
       maxLength: 50,
+      elementType: 'string',
       required: true,
-    },
-    composer: {
+    },    
+    type: {
       type: 'string',
       minLength: 3,
       maxLength: 50,
@@ -52,15 +53,16 @@ const imageSchemaQuery = {
       max: 58
     },
     characters: {
-      type: 'string',
-      minLength: 3,
+      type: 'array',
+      minLength: 1,
       maxLength: 50,
+      elementType: 'string',
       required: true,
-    },
+    },    
     type: {
       type: 'string',
       minLength: 3,
-      maxLength: 50,
+      maxLength: 20,
       required: true,
     },
     episode: {

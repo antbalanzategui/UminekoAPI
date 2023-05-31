@@ -1,10 +1,5 @@
-// This is the querySchema for the Characters, essentially specifies 
-// particular attributes for each parameter within a schema,
-// this is then used to measure a parameter's validity within the
-// validateQuery function below
-
 // Function to check whether the attributes of parameters within a request 
-// match it's designated schema's rules...
+// match its designated schema's rules...
 function validateQuery(query, querySchema) {
   const errors = [];
   const allowedParams = Object.keys(querySchema);
@@ -14,7 +9,7 @@ function validateQuery(query, querySchema) {
       errors.push(`Invalid parameter: ${param}`);
     }
   }
-  
+
   for (const [param, rules] of Object.entries(querySchema)) {
     // Check if parameter is present in query string
     if (!(param in query)) {
@@ -24,6 +19,38 @@ function validateQuery(query, querySchema) {
     // Check if parameter is required and missing
     if (rules.required && (query[param] === undefined || query[param] === '')) {
       errors.push(`${param} is required`);
+      continue;
+    }
+
+    // Handle array type separately
+    if (rules.type === 'array') {
+      const value = query[param];
+
+      // Check if parameter is present and is an array
+      if (!Array.isArray(value)) {
+        errors.push(`${param} must be an array`);
+        continue;
+      }
+
+      // Check array length if specified
+      if (rules.minLength !== undefined && value.length < rules.minLength) {
+        errors.push(`${param} must have at least ${rules.minLength} elements`);
+      }
+      if (rules.maxLength !== undefined && value.length > rules.maxLength) {
+        errors.push(`${param} must have at most ${rules.maxLength} elements`);
+      }
+
+      // Validate individual elements of the array if additional rules exist
+      if (rules.elementType) {
+        const elementType = rules.elementType;
+        for (const element of value) {
+          if (typeof element !== elementType) {
+            errors.push(`${param} elements must be of type ${elementType}`);
+            break;
+          }
+        }
+      }
+
       continue;
     }
 
@@ -74,11 +101,11 @@ function validateQuery(query, querySchema) {
       if (!/^[A-Za-z]+$/.test(query[param])) {
         errors.push(`${param} must contain only alphabetic characters`);
       }
-    }    
+    }
   }
   return errors;
 }
 
 module.exports = {
-    validateQuery,
-  };
+  validateQuery,
+};
