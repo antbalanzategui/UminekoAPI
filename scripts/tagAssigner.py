@@ -143,6 +143,9 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 modified_urls = ['api/media/' + url.split('api/images/')[1] for url in image_urls]
+image_tags = [
+    [tag.replace('CG', 'Graphic') for tag in entry] for entry in image_tags
+]
 
 # Print the modified URLs
 for url in modified_urls:
