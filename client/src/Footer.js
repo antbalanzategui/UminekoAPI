@@ -10,7 +10,7 @@ function Footer() {
       <a href="/contact">Contact</a>
     </div>
     <div className="footer-bottom">
-    <p>© {new Date().getFullYear()} UminekoAPI. All rights reserved.</p>
+    <p>© {new Date().getFullYear()} UminekoAPI</p>
   </div>
     <div className="footer-social">
       <IconButton>
