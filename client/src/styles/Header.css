@@ -6,6 +6,8 @@
 body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
+
 .logo {
     width: 32px;
     height: 32px;
@@ -23,6 +25,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.5rem;
   }
 
   .navbar-list li a {
@@ -39,6 +42,7 @@ body {
     width: 100%; /* Set the width to 100% */
     left: 0; /* Ensure it starts from the left edge of the screen */
     opacity: 97%;
+    height: 75px;
   }
 
   .HomeDiv {
@@ -73,8 +77,56 @@ body {
 
   }
 
+  @media (max-width: 768px) {
+
+    .navbar-list li {
+      font-size: 1rem;
+    }
+
+    .logo {
+      width: 24px;
+      height: 24px;
+  }
+
+  .sticky-navbar {
+    height: 50px;
+  }
+  
+    
+  }
+  
+  @media (max-width: 600px) {
+
+    .navbar-list li {
+      font-size: 0.75rem;
+    }
 
 
+    .logo {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .GitHubHolder {
+      margin-top: -50%;
+    }
+
+    
+    
+  }
+
+  @media (max-width: 300px) {
+
+    .navbar-list li {
+      font-size: 0.25rem;
+    }
+
+
+    .logo {
+      width: 10px;
+      height: 10px;
+    }
+  }
 
 
   

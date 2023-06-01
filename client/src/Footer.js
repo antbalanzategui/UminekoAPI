@@ -15,7 +15,7 @@ function Footer() {
     <div className="footer-social">
       <IconButton>
       <a href="https://github.com/antbalanzategui/UminekoAPI" target="_blank" rel="noopener noreferrer">
-      <MarkGithubIcon size={32} />
+      <MarkGithubIcon className ="footerLogo" size={32} />
       </a>
       </IconButton>
     </div>

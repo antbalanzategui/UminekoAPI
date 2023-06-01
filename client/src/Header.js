@@ -99,14 +99,14 @@ const lightTheme = createTheme({
           </li>
           <li>
             <IconButton onClick={toggleLightMode}>
-              {isLightMode ? <Moon size={32} /> : <Sun size={32} />}
+              {isLightMode ? <Moon className="logo" size={32} /> : <Sun className="logo" size={32} />}
               {/* Moon/Sun icon */}
             </IconButton>
           </li>
           <li>
-            <IconButton>
-            <a href="https://github.com/antbalanzategui/UminekoAPI" target="_blank" rel="noopener noreferrer">
-              <MarkGithubIcon size={32} />
+            <IconButton className = "iconButton">
+            <a href="https://github.com/antbalanzategui/UminekoAPI" target="_blank" rel="noopener noreferrer" className="GitHubHolder">
+              <MarkGithubIcon className="logo" size={32} />
               {/* GitHub icon */}
             </a>
             </IconButton>
