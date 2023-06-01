@@ -108,10 +108,11 @@ const SoundTrackDisplay = () => {
                 title={episode.title}
                 src={`https://www.youtube.com/embed/${episode.videoId}`}
                 allow="autoplay; encrypted-media"
-                allowFullScreen
               ></iframe>
+              <div className="songInfo">
               <h3>{episode.title}</h3>
               <p>Composer: {episode.composer}</p>
+              </div>
             </div>
           ))}
         </Carousel>
@@ -120,7 +121,7 @@ const SoundTrackDisplay = () => {
         For instance, if you wanted to display computer graphics from a particular episode using the Images route:
       </div>
       <div className="graphicContainer">
-      <img className ="graphic-image" src={graphics[graphicIndex].url}/>
+      <img className ="graphic-image" alt="Graphic From Episode" src={graphics[graphicIndex].url}/>
       </div>
       <Footer />
     </div>
