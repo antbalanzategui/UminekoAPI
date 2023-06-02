@@ -7,7 +7,7 @@ const ImageSwapper = () => {
   let img;
   let originalImg;
   let swapped = false;
-  let frameDelay = 30; // Delay duration in frames for new swaps
+  let frameDelay = 10; // Delay duration in frames for new swaps
   let swapBackDelay = 60; // Delay duration in frames before swapping back
   let currentFrame = 0; // Current frame count
 
@@ -23,9 +23,9 @@ const ImageSwapper = () => {
     let scaleMultiplier;
 
     if (screenWidth < 600) {
-      scaleMultiplier = 0.8;
-    } else if (screenWidth < 1200) {
       scaleMultiplier = 0.7;
+    } else if (screenWidth < 1200) {
+      scaleMultiplier = 0.65;
     } else {
       scaleMultiplier = 0.6;
     }
@@ -33,7 +33,7 @@ const ImageSwapper = () => {
     let canvasWidth = screenWidth * scaleMultiplier;
     let canvasHeight = window.innerHeight * scaleMultiplier;
     if (screenWidth > 1200) {
-      canvasHeight = canvasHeight * 1.5;
+      canvasHeight = canvasHeight * 1.2;
       canvasWidth = canvasWidth * 0.8;
     }
     p.resizeCanvas(canvasWidth, canvasHeight);
@@ -55,9 +55,9 @@ const ImageSwapper = () => {
     let scaleMultiplier;
 
     if (screenWidth < 600) {
-      scaleMultiplier = 0.8;
-    } else if (screenWidth < 1200) {
       scaleMultiplier = 0.7;
+    } else if (screenWidth < 1200) {
+      scaleMultiplier = 0.65;
     } else {
       scaleMultiplier = 0.6;
     }
@@ -66,7 +66,7 @@ const ImageSwapper = () => {
     
     let canvasHeight = window.innerHeight * scaleMultiplier;
     if (screenWidth > 1200) {
-      canvasHeight = canvasHeight * 1.5;
+      canvasHeight = canvasHeight * 1.2;
       canvasWidth = canvasWidth * 0.8;
     }
 

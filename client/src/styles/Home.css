@@ -8,13 +8,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  height: 300px;
+  padding-top: 100px;
+  height: 500px;
 }
 
 .h3container {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .FeatureSection {
@@ -32,6 +32,7 @@
   background: linear-gradient(to right, #fcb045, #fd1d1d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
 }
 
 /* The typing effect */
@@ -106,14 +107,16 @@
   border-image-source: linear-gradient(to right, #eeaeca, #94bbe9);
 }
 .canvasHolder {
-  padding-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  margin-top: -150px;
 }
-
 @media (max-width: 1068px) {
+
+  .canvasHolder {
+    margin-top: -150px;
+  }
   .FeatureSection {
     margin-top: 50px; /* Increase the top margin to create space */
     margin-left: 0px;
@@ -138,6 +141,15 @@
 }
 
 @media (max-width: 768px) {
+  .canvasHolder {
+    margin-top: -140px;
+  }
+  .IntroDiv {
+    font-size: 1rem;
+  }
+  .UminekoName {
+    font-size: 2rem;
+  }
   .gridItem {
     width: 55vw;
   }
@@ -151,6 +163,24 @@
   }
   .FeatureSection {
     margin-left: 0px;
+  }
+}
+
+@media (max-width: 660px) {
+  .IntroDiv {
+    font-size: 0.75rem;
+  }
+  .UminekoName {
+    font-size: 1.5rem;
+  }
+  .canvasHolder {
+    margin-top: -120px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .canvasHolder {
+    margin-top: 0;
   }
 }
 
