@@ -8,67 +8,45 @@ const ImageSwapper = () => {
   let originalImg;
   let swapped = false;
   let frameDelay = 10; // Delay duration in frames for new swaps
-  let swapBackDelay = 60; // Delay duration in frames before swapping back
+  let swapBackDelay = 120; // Delay duration in frames before swapping back
   let currentFrame = 0; // Current frame count
 
   const preload = (p) => {
     // Load your image here
-    img = p.loadImage('http://localhost:3001/api/media/thumbnail1.jpg');
-    originalImg = p.loadImage('http://localhost:3001/api/media/thumbnail1.jpg');
+    img = p.loadImage('http://localhost:3001/api/media/thumbnail2.jpg');
+    originalImg = p.loadImage('http://localhost:3001/api/media/thumbnail2.jpg');
   };
 
   const resizeCanvas = () => {
     const p = p5InstanceRef.current;
     const screenWidth = window.innerWidth;
-    let scaleMultiplier;
-
-    if (screenWidth < 600) {
-      scaleMultiplier = 0.7;
-    } else if (screenWidth < 1200) {
-      scaleMultiplier = 0.65;
-    } else {
-      scaleMultiplier = 0.6;
-    }
-
-    let canvasWidth = screenWidth * scaleMultiplier;
-    let canvasHeight = window.innerHeight * scaleMultiplier;
-    if (screenWidth > 1200) {
-      canvasHeight = canvasHeight * 1.2;
-      canvasWidth = canvasWidth * 0.8;
-    }
+    const canvasWidth = Math.floor(30 * Math.log(screenWidth) + 0.15 * screenWidth);
+    let canvasHeight = Math.floor(canvasWidth * 1.5);
     p.resizeCanvas(canvasWidth, canvasHeight);
     reloadAndResizeImages(p, canvasWidth, canvasHeight);
   };
 
   const reloadAndResizeImages = (p, canvasWidth, canvasHeight) => {
-    img = p.loadImage('http://localhost:3001/api/media/thumbnail1.jpg', () => {
+    img = p.loadImage('http://localhost:3001/api/media/thumbnail2.jpg', () => {
       img.resize(canvasWidth, canvasHeight, p.RESIZEMODE_NEAREST);
     });
 
-    originalImg = p.loadImage('http://localhost:3001/api/media/thumbnail1.jpg', () => {
+    originalImg = p.loadImage('http://localhost:3001/api/media/thumbnail2.jpg', () => {
       originalImg.resize(canvasWidth, canvasHeight, p.RESIZEMODE_NEAREST);
     });
   };
 
   const setup = (p) => {
     const screenWidth = window.innerWidth;
-    let scaleMultiplier;
+    const canvasWidth = Math.floor(30 * Math.log(screenWidth) + 0.15 * screenWidth);
+    let canvasHeight = Math.floor(canvasWidth * 1.414);
 
-    if (screenWidth < 600) {
-      scaleMultiplier = 0.7;
-    } else if (screenWidth < 1200) {
-      scaleMultiplier = 0.65;
-    } else {
-      scaleMultiplier = 0.6;
-    }
 
-    let canvasWidth = screenWidth * scaleMultiplier;
-    
-    let canvasHeight = window.innerHeight * scaleMultiplier;
-    if (screenWidth > 1200) {
-      canvasHeight = canvasHeight * 1.2;
-      canvasWidth = canvasWidth * 0.8;
-    }
+    console.log(screenWidth);
+    console.log(window.innerHeight);
+    console.log(canvasWidth);
+    console.log(canvasHeight);
+
 
     p.createCanvas(canvasWidth, canvasHeight).parent(canvasRef.current);
     reloadAndResizeImages(p, canvasWidth, canvasHeight);
@@ -96,8 +74,8 @@ const ImageSwapper = () => {
       }
     } else if (p.frameCount - currentFrame >= frameDelay) {
       // Swap multiple random sections of the image after the delay
-      const numSwaps = 100; // Number of sections to be swapped
-      const sectionSize = 12; // Size of each section
+      const numSwaps = 25; // Number of sections to be swapped
+      const sectionSize = Math.floor((30 * Math.log(window.innerWidth) + 0.15 * window.innerWidth) / 28); // Size of each section
 
       for (let i = 0; i < numSwaps; i++) {
         let section1X = p.random(0, img.width - sectionSize);
