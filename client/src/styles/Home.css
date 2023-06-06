@@ -3,14 +3,18 @@
   flex-direction: column;
   align-items: left;
 }
-
+::selection {
+  background: lavender;
+}
 .IntroDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  justify-content: center;
   padding-top: 100px;
-  height: 500px;
+  height: 600px;
+
 }
 
 .h3container {
@@ -24,12 +28,12 @@
 
 .UminekoName {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid #ff5722; /* The typewriter cursor */
+  border-right: .15em solid #BF953F; /* The typewriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: 0; /* Adjust as needed */
   animation: typing 7s steps(40, end) infinite;
-  background: linear-gradient(to right, #fcb045, #fd1d1d);
+  background: linear-gradient(to right,#BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 2.5rem;
@@ -52,6 +56,14 @@
   margin-left: 10px; /* Adjust the margin as needed */
 }
 
+.featureHeader {
+  background: linear-gradient(to bottom,#BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
@@ -70,18 +82,16 @@
   background-color: black;
   border-radius: 50%;
 }
-
-
-[data-theme="dark"] .UminekoName {
-  border-right: .15em solid #d59bf6;
-
-  background: linear-gradient(to right, #eeaeca, #94bbe9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 .gridItem {
   position: relative;
   overflow: hidden;
+}
+
+.imageReal {
+  /*border: solid 3px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gridItem:before {
@@ -94,7 +104,7 @@
   border-radius: 16px;
   border: 3px solid transparent;
   border-image-slice: 1;
-  border-image-source: linear-gradient(to right, #fcb045, #fd1d1d);
+  border-image-source: linear-gradient(to right,#BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
@@ -102,20 +112,29 @@
 .gridItem:hover:before {
   opacity: 1;
 }
-
-[data-theme="dark"] .gridItem:before {
-  border-image-source: linear-gradient(to right, #eeaeca, #94bbe9);
-}
 .canvasHolder {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -150px;
+  background-color: #efeff2;
+  margin-top: 7.5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
+
+
+[data-theme="dark"] .canvasHolder {
+  background-color: #191919;
+}
+
 @media (max-width: 1068px) {
 
+  .IntroDiv {
+    height: 400px;
+  }
+
   .canvasHolder {
-    margin-top: -150px;
+    width: 100vw;
   }
   .FeatureSection {
     margin-top: 50px; /* Increase the top margin to create space */
@@ -141,9 +160,6 @@
 }
 
 @media (max-width: 768px) {
-  .canvasHolder {
-    margin-top: -140px;
-  }
   .IntroDiv {
     font-size: 1rem;
   }
@@ -164,6 +180,9 @@
   .FeatureSection {
     margin-left: 0px;
   }
+  .IntroDiv {
+    height: 300px;
+  }
 }
 
 @media (max-width: 660px) {
@@ -173,14 +192,20 @@
   .UminekoName {
     font-size: 1.5rem;
   }
+  .IntroDiv {
+    height: 200px;
+  }
   .canvasHolder {
-    margin-top: -120px;
+    margin-top: 25%;
   }
 }
 
 @media (min-width: 2000px) {
-  .canvasHolder {
-    margin-top: 0;
+  .IntroDiv {
+    font-size: 1.5rem;
+  }
+  .UminekoName {
+    font-size: 4rem;
   }
 }
 

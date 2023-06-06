@@ -43,7 +43,7 @@ const darkTheme = createTheme({
         root: {
           '&:hover': {
             border: '1.5px solid',
-            borderImage: 'linear-gradient(to right, #eeaeca, #94bbe9) 1',
+            borderImage: 'linear-gradient(to right,#BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C) 1',
             borderImageSlice: 1,
           },
         },
@@ -67,7 +67,7 @@ const lightTheme = createTheme({
         root: {
           '&:hover': {
             border: '1.5px solid',
-            borderImage: 'linear-gradient(to right, #fcb045, #fd1d1d) 1',
+            borderImage: 'linear-gradient(to right,#BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C) 1',
             borderImageSlice: 1,
           },
         },

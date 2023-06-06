@@ -56,11 +56,7 @@ ul {
     margin-top: 60px;
     padding-left: 5%;
     border-left: 2.5px solid;
-    border-image: repeating-linear-gradient(to top, #fcb045, #fd1d1d 20%) 1;
-}
-
-[data-theme="dark"] .content {
-    border-image: repeating-linear-gradient(to top, #eeaeca, #94bbe9 20%) 1;
+    border-image: repeating-linear-gradient(to top,#BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C 20%) 1;
 }
   
 .content-section {
@@ -79,7 +75,7 @@ html {
     color: #ffffff;
   }
 
-[dark-theme="dark"] .navHolder {
+[data-theme="dark"] .navHolder {
     flex: 25%;
     background-color: #121212;
 }

@@ -6,8 +6,6 @@ import { FaReddit } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import ImageSketch from './ImageSketch';
 
-import p5 from 'p5';
-
 const Home = () => {
 
 
@@ -47,7 +45,16 @@ const Home = () => {
       </div>
       <div className ="FeatureSection">
         <div className = "featureHeader">
-        <Star size={24}/>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <linearGradient id="gradient" gradientTransform="rotate(90)">
+      <stop offset="0%" stop-color="#BF953F" />
+      <stop offset = "25%" stop-color="#FCF6BA"/> 
+      <stop offset = "50%" stop-color="#B38728"/>
+      <stop offset = "75%" stop-color="#FBF5B7"/>
+      <stop offset = "100%" stop-color="#AA771C"/>{/* Replace with your desired gradient colors */}
+    </linearGradient>
+    <Star color="url(#gradient)" />
+  </svg>
         <h1>Features</h1>
         </div>
         <div className="featuresGrid">
