@@ -112,7 +112,7 @@ const ImageSwapper = () => {
     };
   }, []);
 
-  return <div ref={canvasRef}></div>;
+  return <div className = "imageReal" ref={canvasRef}></div>;
 };
 
 export default ImageSwapper;
