@@ -79,6 +79,23 @@ body {
 
   }
 
+  .Linked {
+    margin-top: -1%;
+    padding: 9px;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+  }
+
+  .navbar-list li .Linked:hover {
+    /* Add hover styles for the navbar links */
+    /* Example styles: */
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  [data-theme="dark"] .navbar-list li .Linked:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+  }
+
   @media (max-width: 768px) {
 
     .navbar-list li {

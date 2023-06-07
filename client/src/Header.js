@@ -41,8 +41,11 @@ const darkTheme = createTheme({
       styleOverrides: {
         // Name of the slot
         root: {
-          '&:hover': {
+          '&': {
             border: '1.5px solid',
+            borderColor: '#121212'
+          },
+          '&:hover': {
             borderImage: 'linear-gradient(to right,#BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C) 1',
             borderImageSlice: 1,
           },
@@ -84,7 +87,7 @@ const lightTheme = createTheme({
       <nav className = "sticky-navbar">
         <ul className='navbar-list'>
           <li>
-            <Link to="/">
+            <Link to="/" className="Linked">
               <div className="HomeDiv">
                 <img src={process.env.PUBLIC_URL + '/Umineko_One-Winged_Eagle.png'} alt="Umineko Logo" className='logo' />
                 <span className="UmiSpan">UminekoAPI</span>
@@ -92,10 +95,10 @@ const lightTheme = createTheme({
             </Link>
           </li>
           <li>
-            <Link to="/documentation">Documentation</Link>
+            <Link to="/documentation" className="Linked">Documentation</Link>
           </li>
           <li>
-            <Link to="/showcase">Showcase</Link>
+            <Link to="/showcase" className="Linked">Showcase</Link>
           </li>
           <li>
             <IconButton onClick={toggleLightMode}>
