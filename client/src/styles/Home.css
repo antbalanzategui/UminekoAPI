@@ -12,8 +12,7 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  padding-top: 100px;
-  height: 600px;
+  height: 90vh;
 
 }
 
@@ -23,7 +22,8 @@
 
 .FeatureSection {
   margin-top: 50px; /* Increase the top margin to create space */
-  margin-left: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .UminekoName {
@@ -70,9 +70,12 @@
 }
 
 .gridItem {
-  padding: 20px;
-  width: 90%;
+  width: 100%;
+  height: 12vw;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .inverted-icon {
@@ -125,6 +128,7 @@
   border-right-width: 0px;
   border-left-width: 0px;
   border-color: rgb(0,0,0,.1);
+  height: 100vh;
 }
 
 .canvasHolder > * {
@@ -140,9 +144,6 @@
 
 @media (max-width: 1068px) {
 
-  .IntroDiv {
-    height: 400px;
-  }
 
   .canvasHolder {
     width: 100vw;
@@ -156,6 +157,7 @@
   }
   .gridItem {
     width: 40vw;
+    height: 20vw;
   }
   /* Medium size screens */
   .featuresGrid {
@@ -178,7 +180,8 @@
     font-size: 2rem;
   }
   .gridItem {
-    width: 55vw;
+    width: 75vw;
+    height: 35vw;
   }
   .page-container {
     align-items: center;
@@ -191,11 +194,9 @@
   .FeatureSection {
     margin-left: 0px;
   }
-  .IntroDiv {
-    height: 300px;
-  }
     .canvasHolder {
       flex-direction: column;
+      height: 200vh;
     }
 }
 
@@ -206,11 +207,17 @@
   .UminekoName {
     font-size: 1.5rem;
   }
-  .IntroDiv {
-    height: 200px;
-  }
   .canvasHolder {
-    margin-top: 25%;
+    height: 150vh;
+  }
+  .gridItem{
+    height: 250px;
+  }
+}
+
+@media(max-width: 400px) {
+  .canvasHolder {
+    height: 100vh;
   }
 }
 
