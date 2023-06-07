@@ -60,9 +60,7 @@ const Home = () => {
         <h1>Features</h1>
         </div>
         <div className="featuresGrid">
-      <Card className="gridItem cardWithBorder"  
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      <Card className="gridItem"  
       sx={{ borderRadius: '4px' }}
       >
         <CardContent>
