@@ -13,8 +13,8 @@ const MetaBalls = () => {
       let canvas;
 
       p.setup = () => {
-        const canvasWidth = window.innerWidth; // Get the width of the window
-        const canvasHeight = window.innerHeight * 1.1; // Set the height as desired
+        const canvasWidth = window.innerWidth * 0.5; // Get the width of the window
+        const canvasHeight = window.innerHeight * 0.5; // Set the height as desired
         canvas = p.createCanvas(canvasWidth, canvasHeight);
         p.colorMode(p.HSB);
         p.frameRate(30); // Use requestAnimationFrame instead
@@ -59,8 +59,8 @@ const MetaBalls = () => {
       };
 
       p.windowResized = () => {
-        const canvasWidth = window.innerWidth; // Get the updated width of the window
-        const canvasHeight = window.innerHeight*1.1; // Get the updated height of the window
+        const canvasWidth = window.innerWidth * 0.5; // Get the updated width of the window
+        const canvasHeight = window.innerHeight * 0.5; // Get the updated height of the window
         p.resizeCanvas(canvasWidth, canvasHeight);
       };
 
