@@ -32,62 +32,77 @@ const originalText = [
     'Sleep peacefully, my beloved witch, Beatrice.',
   ];
 
-const Epitaph = () => {
-
-  const [scrambledText, setScrambledText] = useState([]);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const chars = '*?><[]&@#)(.%$-_:/;?!'.split('');
-
-  const randomInt = max => Math.floor(Math.random() * max);
-  const randomFromArray = array => array[randomInt(array.length)];
-
-  const scrambleText = text => {
-    return text.map(line =>
-      line
-        .split('')
-        .map(x => randomInt(12) > 10 ? randomFromArray(chars) : x)
-        .join('')
+  const Epitaph = () => {
+    const [scrambledText, setScrambledText] = useState([]);
+    const [isHovered, setIsHovered] = useState(false);
+  
+    const chars = '*?><[]&@#)(.%$-_:/;?!'.split('');
+  
+    const randomInt = max => Math.floor(Math.random() * max);
+    const randomFromArray = array => array[randomInt(array.length)];
+  
+    const scrambleText = text => {
+      return text.map(line =>
+        line
+          .split('')
+          .map(x => randomInt(12) > 10 ? randomFromArray(chars) : x)
+          .join('')
+      );
+    };
+  
+    useEffect(() => {
+      let intervalId;
+  
+      if (isHovered) {
+        intervalId = setInterval(() => {
+          setScrambledText(scrambleText(originalText));
+        }, 200); // Adjust the delay here (in milliseconds)
+      } else {
+        setScrambledText(originalText);
+      }
+  
+      return () => {
+        clearInterval(intervalId);
+      };
+    }, [isHovered, originalText]);
+  
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+  
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
+  
+    const isScrambledChar = char => {
+      return chars.includes(char);
+    };
+  
+    return (
+      <div>
+        <div
+          className="EpitaphContainer"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {scrambledText.map((line, lineIndex) => (
+            <span key={lineIndex}>
+              {line.split('').map((char, charIndex) => (
+                <React.Fragment key={charIndex}>
+                  {isScrambledChar(char) ? (
+                    <React.Fragment>
+                      <div className="scrambled">{char}</div>
+                    </React.Fragment>
+                  ) : (
+                    char
+                  )}
+                </React.Fragment>
+              ))}
+            </span>
+          ))}
+        </div>
+      </div>
     );
   };
-
-  useEffect(() => {
-    let intervalId;
-
-    if (isHovered) {
-      intervalId = setInterval(() => {
-        setScrambledText(scrambleText(originalText));
-      }, 200); // Adjust the delay here (in milliseconds)
-    } else {
-      setScrambledText(originalText);
-    }
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [isHovered, originalText]);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  return (
-    <div>
-      <div
-        className="EpitaphContainer"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {scrambledText.map((line, index) => (
-          <span key={index}>{line}</span>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default Epitaph;
+  
+  export default Epitaph;
