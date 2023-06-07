@@ -90,6 +90,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 2.5%;
 }
 
 .gridItem:before {
@@ -97,6 +98,7 @@
   position: absolute;
   top: 0;
   left: 0;
+
   width: 100%;
   height: 100%;
   border-radius: 16px;
@@ -113,7 +115,7 @@
 .canvasHolder {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: rgb(0,0,0,.05);
   margin-top: 7.5%;
   padding-top: 2%;
@@ -123,7 +125,11 @@
   border-right-width: 0px;
   border-left-width: 0px;
   border-color: rgb(0,0,0,.1);
+}
 
+.canvasHolder > * {
+  flex-basis: 50%; /* Set a 50% width for each element */
+  padding: 0 20px; /* Add padding to each element */
 }
 
 
@@ -188,6 +194,9 @@
   .IntroDiv {
     height: 300px;
   }
+    .canvasHolder {
+      flex-direction: column;
+    }
 }
 
 @media (max-width: 660px) {

@@ -5,6 +5,7 @@ import { Card, CardContent, Typography} from '@mui/material';
 import { FaReddit } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import ImageSketch from './ImageSketch';
+import Epitaph from './Epitaph';
 
 const Home = () => {
 
@@ -42,6 +43,7 @@ const Home = () => {
       </div>
       <div className="canvasHolder">
       <ImageSketch/>
+      <Epitaph/>
       </div>
       <div className ="FeatureSection">
         <div className = "featureHeader">
