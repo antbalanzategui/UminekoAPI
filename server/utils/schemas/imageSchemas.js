@@ -20,6 +20,8 @@ const imageSchemaQuery = {
       minLength: 1,
       maxLength: 50,
       elementType: 'string',
+      elementMinLength: 3,
+      elementMaxLength: 10,
       required: true,
     },    
     type: {

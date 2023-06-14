@@ -42,11 +42,14 @@ function validateQuery(query, querySchema) {
 
       // Validate individual elements of the array if additional rules exist
       if (rules.elementType) {
+        
         const elementType = rules.elementType;
         for (const element of value) {
-          if (typeof element !== elementType) {
+          if (rules.elementType === 'string' && !/^[A-Za-z]+$/.test(element)) {
             errors.push(`${param} elements must be of type ${elementType}`);
-            break;
+          }
+          if (element.length < rules.elementMinLength) {
+            errors.push(`${param} elements must be of size ${rules.elementMinLength}`)
           }
         }
       }
