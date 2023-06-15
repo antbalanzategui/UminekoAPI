@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 
 vndb = VNDB()
 
-characters = vndb.get_all_character(Character.vn_id == 24)
+characters = vndb.get_all_character(Character.vn_id == 2153)
 
 # Initialization of Necessary variables
 id = 1
@@ -60,6 +60,9 @@ for character in characters:
     name = character.name
     image = character.image
     age = character.age
+    if age is None:
+        age = "NA"
+
     gender = str(character.gender).replace("Gender.", "").lower().capitalize()
     bloodType = str(character.blood_type).replace("BloodType.", "")
     print("Image:", character.image)
@@ -76,8 +79,14 @@ for character in characters:
     print("Day:", character.birthday.day)
     monthOfBirth = character.birthday.month
     dayOfBirth = character.birthday.month
-    #sql = "INSERT INTO uminekoapi.characters (id, name, img, description, age, gender, bloodType, monthOfBirth, dayOfBirth) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    #mycursor.execute(sql, (id, name, image, finalizedDesc, age, gender, bloodType, monthOfBirth, dayOfBirth))
+
+    if monthOfBirth is None:
+        monthOfBirth = -1
+    if dayOfBirth is None:
+        dayOfBirth = -1
+
+    sql = "INSERT INTO uminekoapi.characters (id, name, img, description, age, gender, bloodType, birthMonth, dayBirth) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    mycursor.execute(sql, (id, name, image, finalizedDesc, age, gender, bloodType, monthOfBirth, dayOfBirth))
     id = id + 1
 
 
