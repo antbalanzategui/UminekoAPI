@@ -5,6 +5,7 @@ const express = require('express');
 const characterRouter = require('./routes/characterRoutes');
 const soundtrackRouter = require('./routes/soundtrackRoutes');
 const imageRouter = require('./routes/imagesRoutes');
+const triviaRouter = require('./routes/triviaRoutes');
 const app = express();
 const cors = require('cors')
 const path = require('path');
@@ -18,7 +19,7 @@ app.use('/api/media', express.static(path.join(__dirname, '../public/images')));
 app.use('/api/characters', characterRouter);
 app.use('/api/soundtrack', soundtrackRouter);
 app.use('/api/images', imageRouter);
-
+app.use('/api/trivia', triviaRouter);
 
 
 app.listen(process.env.PORT || '3001', () => {
