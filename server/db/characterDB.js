@@ -68,7 +68,7 @@ charDB.characterByQuery = (queryParams) => {
     } else if (queryParams.idStart) {
       query += " AND id BETWEEN ? AND ?";
       values.push(queryParams.idStart);
-      values.push(46);
+      values.push(63);
     } else if (queryParams.idEnd) {
       query += " AND id BETWEEN ? AND ?";
       values.push(1);

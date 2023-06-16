@@ -5,7 +5,7 @@ const characterSchema = {
       positive: true,
       integer: true,
       required: true,
-      max: 46
+      max: 63
     },
     name: {
       type: 'string',
@@ -34,7 +34,7 @@ const characterSchema = {
       positive: true,
       integer: true,
       required: true,
-      max: 46
+      max: 63
     },
     idEnd: {
       min: 1,
@@ -42,7 +42,7 @@ const characterSchema = {
       positive: true,
       integer: true,
       required: true,
-      max: 46
+      max: 63
     },
     name: {
       type: 'string',
