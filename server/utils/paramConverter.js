@@ -29,6 +29,9 @@ const convertToInt = (req, res, next) => {
     if (req.query.episodeEnd) {
       req.query.episodeEnd = parseInt(req.query.episodeEnd);
     }
+    if (req.query.random) {
+      req.query.random = parseInt(req.query.random);
+    }
     next();
   };
 

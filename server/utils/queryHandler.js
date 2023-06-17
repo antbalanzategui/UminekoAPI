@@ -9,7 +9,22 @@ async function handleQuery(req, res, next, queryFunction, queryObj, querySchema)
     }
     try {
       let results = await queryFunction(queryObj);
+
+      if (queryObj.random && queryObj.random > results.length) {
+        res.status(400).json({
+          error: "Random count exceeds the number of results.",
+          totalResults: results.length,
+        });
+        return;
+      }
   
+      if (queryObj.random) {
+        // Shuffle the results array randomly
+        let shuffledResults = results.sort(() => Math.random() - 0.5);
+        // Get the first `random` number of results
+        results = shuffledResults.slice(0, queryObj.random);
+      }
+
       if (results.length === 0) {
         res.status(200).json({ message: 'No results found.' });
       } else {

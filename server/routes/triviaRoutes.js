@@ -8,6 +8,7 @@ const paramConverter = require('../utils/paramConverter');
 const convertToInt = paramConverter.convertToInt;
 const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
+const triviaSchemaQuery = triviaSchemas.triviaSchemaQuery;
 
 
 
@@ -33,6 +34,10 @@ router.get('/type=:type?', async(req, res, next) => {
     await handleQuery(req, res, next, db.triviaByAssociation.bind(null, req.params.type), req.params, triviaSchema);
 });
 
+router.get('/', convertToInt, async (req, res, next) => {
+  await handleQuery(req, res, next, db.triviaByQuery, req.query, triviaSchemaQuery);
+});
+  
 
 
 
