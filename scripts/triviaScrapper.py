@@ -42,6 +42,74 @@ data = []
 
 skippedCharacters = {"Runon", "Renon", "Sanon", "Benon", "Manon", "Berune", "Asune", "Ronove", "MARIA", "BATTLER", "ANGE-Beatrice", "EVA-Beatrice", "Captain Kawabata", "Beatrice Ushiromiya", "George Ushiromiya", "Rosa Ushiromiya"}
 
+
+name_id_mapping = {
+    "Battler Ushiromiya": 1,
+    "Jessica Ushiromiya": 2,
+    "George Ushiromiya": 3,
+    "Maria Ushiromiya": 4,
+    "Kinzo Ushiromiya": 5,
+    "Shannon": 6,
+    "Kanon": 7,
+    "Rosa Ushiromiya": 8,
+    "Rudolf Ushiromiya": 9,
+    "Eva Ushiromiya": 10,
+    "Hideyoshi Ushiromiya": 11,
+    "Genji Ronoue": 12,
+    "Toshiro Gouda": 13,
+    "Chiyo Kumasawa": 14,
+    "Krauss Ushiromiya": 15,
+    "Natsuhi Ushiromiya": 16,
+    "Beatrice": 17,
+    "Terumasa Nanjou": 18,
+    "Kyrie Ushiromiya": 19,
+    "Bernkastel": 20,
+    "Lambdadelta": 21,
+    "Furfur": 22,
+    "Ange Ushiromiya": 23,
+    "Erika Furudo": 24,
+    "Willard H. Wright": 25,
+    "Lion Ushiromiya": 26,
+    "Zepar": 27,
+    "Ronove": 28,
+    "Gaap": 29,
+    "Virgilia": 30,
+    "EVA-Beatrice": 31,
+    "Lucifer": 32,
+    "Leviathan": 33,
+    "Satan": 34,
+    "Belphegor": 35,
+    "Mammon": 36,
+    "Beelzebub": 37,
+    "Asmodeus": 38,
+    "Dlanor A. Knox": 39,
+    "Amakusa Juuza": 40,
+    "Beatrice Castiglioni": 41,
+    "Cornelia": 42,
+    "Gertrude": 43,
+    "Featherine Augustus Aurora": 44,
+    "Ikuko Hachijo": 45,
+    "Beatrice Ushiromiya": 46,
+    "Tetsurou Okonogi": 47,
+    "Sakutarou": 48,
+    "Clair Vaux Bernardus": 49,
+    "Manon": 50,
+    "Asune": 51,
+    "Berune": 52,
+    "Benon": 53,
+    "Renon": 54,
+    "Runon": 55,
+    "Sanon": 56,
+    "Chiester 410": 57,
+    "Chiester 45": 58,
+    "Chiester 00": 59,
+    "Professor Ootsuki": 60,
+    "Kawabata": 61,
+    "Tohya Hachijo": 62,
+    "Yasuda Sayo": 63
+}
+
+
 for tag in tags:
     if tag.name == "h2":
         currentH2 = tag.text
@@ -58,14 +126,19 @@ for tag in tags:
             ulTag = h2Tag.find_next_sibling("ul")
             liTags = ulTag.find_all("li")
             for li in liTags:
+                counter = counter + 1
+
+                id = name_id_mapping.get(name)
+                if id is None:
+                    id = -1
+
                 print(counter)
                 print(li.text)
                 print(currentH2)
                 print(name)
-                print("-----------------------")
-                counter = counter + 1
-                sql = "INSERT INTO uminekoapi.trivia (id, text, association, `character`) VALUES (%s, %s, %s, %s)"
-                mycursor.execute(sql, (counter, li.text, currentH2, name))
+                print(id)
+                sql = "INSERT INTO uminekoapi.trivia (id, text, association, name, charId) VALUES (%s, %s, %s, %s, %s)"
+                mycursor.execute(sql, (counter, li.text, currentH2, name, id))
 
 mydb.commit()
 

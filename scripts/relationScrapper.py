@@ -43,6 +43,72 @@ data = []
 
 skippedCharacters = {"Runon", "Renon", "Sanon", "Benon", "Manon", "Berune", "Asune", "Professor Ootsuki"}
 
+name_id_mapping = {
+    "Battler Ushiromiya": 1,
+    "Jessica Ushiromiya": 2,
+    "George Ushiromiya": 3,
+    "Maria Ushiromiya": 4,
+    "Kinzo Ushiromiya": 5,
+    "Shannon": 6,
+    "Kanon": 7,
+    "Rosa Ushiromiya": 8,
+    "Rudolf Ushiromiya": 9,
+    "Eva Ushiromiya": 10,
+    "Hideyoshi Ushiromiya": 11,
+    "Genji Ronoue": 12,
+    "Toshiro Gohda": 13,
+    "Chiyo Kumasawa": 14,
+    "Krauss Ushiromiya": 15,
+    "Natsuhi Ushiromiya": 16,
+    "Beatrice": 17,
+    "Terumasa Nanjo": 18,
+    "Kyrie Ushiromiya": 19,
+    "Bernkastel": 20,
+    "Lambdadelta": 21,
+    "Furfur": 22,
+    "Ange Ushiromiya": 23,
+    "Erika Furudo": 24,
+    "Willard H. Wright": 25,
+    "Lion Ushiromiya": 26,
+    "Zepar": 27,
+    "Ronove": 28,
+    "Gaap": 29,
+    "Virgilia": 30,
+    "EVA-Beatrice": 31,
+    "Lucifer": 32,
+    "Leviathan": 33,
+    "Satan": 34,
+    "Belphegor": 35,
+    "Mammon": 36,
+    "Beelzebub": 37,
+    "Asmodeus": 38,
+    "Dlanor A. Knox": 39,
+    "Amakusa Juuza": 40,
+    "Beatrice Castiglioni": 41,
+    "Cornelia": 42,
+    "Gertrude": 43,
+    "Featherine Augustus Aurora": 44,
+    "Ikuko Hachijo": 45,
+    "Beatrice Ushiromiya": 46,
+    "Tetsurou Okonogi": 47,
+    "Sakutarou": 48,
+    "Clair Vaux Bernardus": 49,
+    "Manon": 50,
+    "Asune": 51,
+    "Berune": 52,
+    "Benon": 53,
+    "Renon": 54,
+    "Runon": 55,
+    "Sanon": 56,
+    "Chiester 410": 57,
+    "Chiester 45": 58,
+    "Chiester 00": 59,
+    "Professor Ootsuki": 60,
+    "Kawabata": 61,
+    "Tohya Hachijo": 62,
+    "Sayo Yasuda": 63
+}
+
 for tag in tags:
     if tag.name == "h2":
         currentH2 = tag.text
@@ -73,8 +139,19 @@ for tag in tags:
                     person = atag.text
                     relation = re.search(r'\((.*?)\)', li.text).group(1) if re.search(r'\((.*?)\)', li.text) else ""
                     print(f"{counter}. {person} - {relation}")
-                    sql = "INSERT INTO uminekoapi.relationships (id, personOne, personTwo, type) VALUES (%s, %s, %s, %s)"
-                    mycursor.execute(sql, (counter, name, person, relation))
+                    id = name_id_mapping.get(name)
+                    if id is None:
+                        id = -1
+                    if name == 'MARIA':
+                        id = 4
+                    elif name == 'BATTLER':
+                        id = 1
+                    elif name == 'ANGE-Beatrice':
+                        id = 23
+
+                    # MARIA, BATTLER, ANGE-Beatrice, 
+                    sql = "INSERT INTO uminekoapi.relationships (id, personOne, personTwo, type, charId) VALUES (%s, %s, %s, %s, %s)"
+                    mycursor.execute(sql, (counter, name, person, relation, id))
 
 
 mydb.commit()
