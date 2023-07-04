@@ -70,6 +70,18 @@ const characterSchema = {
       max: 12,
       required: true,
     },
+    trivia: {
+      type: 'string',
+      required: true,
+      elementType: 'boolean',
+
+    },
+    relationships: {
+      type: 'string',
+      required: true,
+      elementType: 'boolean',
+    }
+
   };
 
     module.exports = {

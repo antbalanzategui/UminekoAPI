@@ -41,8 +41,7 @@ function validateQuery(query, querySchema) {
       }
 
       // Validate individual elements of the array if additional rules exist
-      if (rules.elementType) {
-        
+      if (rules.type == 'array' && rules.elementType) {
         const elementType = rules.elementType;
         for (const element of value) {
           if (rules.elementType === 'string' && !/^[A-Za-z]+$/.test(element)) {
@@ -53,12 +52,19 @@ function validateQuery(query, querySchema) {
           }
         }
       }
-
       continue;
     }
 
+    if (rules.type == 'string' && rules.elementType == 'boolean') {
+      let lowerCaseParam = query[param].toLowerCase();
+      query[param] = lowerCaseParam;
+      if (query[param] !== 'true' && query[param] !== 'false') {
+        errors.push(`${param} elements must have value of 'true' or 'false'`)
+      }
+    }
+
     // Check if parameter is present and has the correct type
-    if (query[param] !== undefined && typeof query[param] !== rules.type) {
+    if (query[param] !== undefined && typeof query[param] !== rules.type && rules.type != undefined) {
       errors.push(`${param} must be of type ${rules.type}`);
       continue;
     }
