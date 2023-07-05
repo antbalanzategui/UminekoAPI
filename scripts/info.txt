@@ -1,0 +1,259 @@
+ID: 1
+Name: Van Dine's First
+Description: The reader must have equal opportunity with the detective for solving the mystery. All clues must be plainly stated and described.
+Type: Rules
+
+ID: 2
+Name: Van Dine's Second
+Description: No willful tricks or deceptions may be placed on the reader other than those played legitimately by the criminal on the detective himself.
+Type: Rules
+
+ID: 3
+Name: Van Dine's Third
+Description: There must be no love interest. The business in hand is to bring a criminal to the bar of justice, not to bring a lovelorn couple to the hymeneal altar.
+Type: Rules
+
+ID: 4
+Name: Van Dine's Fourth
+Description: The detective himself, or one of the official investigators, should never turn out to be the culprit. This is bald trickery, on a par with offering someone a bright penny for a five-dollar gold piece. It is false pretenses.
+Type: Rules
+
+ID: 5
+Name: Van Dine's Fifth
+Description: The culprit must be determined by logical deductions — not by accident or coincidence or unmotivated confession. To solve a criminal problem in this latter fashion is like sending the reader on a deliberate wild-goose chase, and then telling him, after he has failed, that you had the object of his search up your sleeve all the time. Such an author is no better than a practical joker.
+Type: Rules
+
+ID: 6
+Name: Van Dine's Sixth
+Description: The detective novel must have a detective in it; and a detective is not a detective unless he detects. His function is to gather clues that will eventually lead to the person who did the dirty work in the first chapter; and if the detective does not reach his conclusions through an analysis of those clues, he has no more solved his problem than the schoolboy who gets his answer out of the back of the arithmetic.
+Type: Rules
+
+ID: 7
+Name: Van Dine's Seventh
+Description: There simply must be a corpse in a detective novel, and the deader the corpse, the better. No lesser crime than murder will suffice. Three hundred pages are far too much bother for a crime other than murder. After all, the reader's trouble and expenditure of energy must be rewarded.
+Type: Rules
+
+ID: 8
+Name: Van Dine's Eighth
+Description: The problem of the crime must be solved by strictly naturalistic means. Such methods for learning the truth as slate-writing, Ouija boards, mind-reading, spiritualistic séances, crystal-gazing, and the like, are taboo. A reader has a chance when matching his wits with a rationalistic detective, but if he must compete with the world of spirits and go chasing about the fourth dimension of metaphysics, he is defeated ab initio.
+Type: Rules
+
+ID: 9
+Name: Van Dine's Ninth
+Description: There must be but one detective — that is, but one protagonist of deduction — one deus ex machina. To bring the minds of three or four, or sometimes a gang of detectives to bear on a problem, is not only to disperse the interest and break the direct thread of logic but to take an unfair advantage of the reader. If there is more than one detective, the reader does not know who his coeducator is. It is like making the reader run a race with a relay team.
+Type: Rules
+
+ID: 10
+Name: Van Dine's Tenth
+Description: The culprit must turn out to be a person who has played a more or less prominent part in the story — that is, a person with whom the reader is familiar and in whom he takes an interest.
+Type: Rules
+
+ID: 11
+Name: Van Dine's Eleventh
+Description: A servant must not be chosen by the author as the culprit. This is begging a noble question. It is a too easy solution. The culprit must be a decidedly worth-while person — one that wouldn't ordinarily come under suspicion.
+Type: Rules
+
+ID: 12
+Name: Van Dine's Twelfth
+Description: There must be but one culprit, no matter how many murders are committed. The culprit may, of course, have a minor helper or co-plotter, but the entire onus must rest on one pair of shoulders: the entire indignation of the reader must be permitted to concentrate on a single black nature.
+Type: Rules
+
+ID: 13
+Name: Van Dine's Thirteenth
+Description: Secret societies, camorras, mafias, et al., have no place in a detective story. A fascinating and truly beautiful murder is irremediably spoiled by any such wholesale culpability. To be sure, the murderer in a detective novel should be given a sporting chance, but it is going too far to grant him a secret society to fall back on. No high-class, self-respecting murderer would want such odds.
+Type: Rules
+
+ID: 14
+Name: Van Dine's Fourteenth
+Description: The method of murder, and the means of detecting it, must be rational and scientific. That is to say, pseudo-science and purely imaginative and speculative devices are not to be tolerated in the roman policier. Once an author soars into the realm of fantasy, in the Jules Verne manner, he is outside the bounds of detective fiction, cavorting in the uncharted reaches of adventure.
+Type: Rules
+
+ID: 15
+Name: Van Dine's Fifteenth
+Description: The truth of the problem must at all times be apparent — provided the reader is shrewd enough to see it. By this, I mean that if the reader, after learning the explanation for the crime, should reread the book, he would see that the solution had, in a sense, been staring him in the face — that all the clues really pointed to the culprit — and that, if he had been as clever as the detective, he could have solved the mystery himself without going on to the final chapter. That the clever reader does often thus solve the problem goes without saying.
+Type: Rules
+
+ID: 16
+Name: Van Dine's Sixteenth
+Description: A detective novel should contain no long descriptive passages, no literary dallying with side-issues, no subtly worked-out character analyses, no "atmospheric" preoccupations. Such matters have no vital place in a record of crime and deduction. They hold up the action and introduce issues irrelevant to the main purpose, which is to state a problem, analyze it, and bring it to a successful conclusion. To be sure, there must be sufficient descriptiveness and character delineation to give the novel verisimilitude.
+Type: Rules
+
+ID: 17
+Name: Van Dine's Seventeenth
+Description: A professional criminal must never be shouldered with the guilt of a crime in a detective story. Crimes by housebreakers and bandits are the province of the police departments — not of authors and brilliant amateur detectives. A really fascinating crime is one committed by a pillar of a church or a spinster noted for her charities.
+Type: Rules
+
+ID: 18
+Name: Van Dine's Eighteenth
+Description: A crime in a detective story must never turn out to be an accident or a suicide. To end an odyssey of sleuthing with such an anti-climax is to hoodwink the trusting and kind-hearted reader.
+Type: Rules
+
+ID: 19
+Name: Van Dine's Nineteenth
+Description: The motives for all crimes in detective stories should be personal. International plotting and war politics belong in a different category of fiction — in secret-service tales, for instance. But a murder story must be kept gemütlich, so to speak. It must reflect the reader's everyday experiences and give him a certain outlet for his own repressed desires and emotions.
+Type: Rules
+
+ID: 20
+Name: Van Dine's Twentieth
+Description: And (to give my Credo an even score of items) I herewith list a few of the devices that no self-respecting detective story writer will now avail himself of. They have been employed too often and are familiar to all true lovers of literary crime. To use them is a confession of the author's ineptitude and lack of originality.
+Determining the identity of the culprit by comparing the butt of a cigarette left at the scene of the crime with the brand smoked by a suspect.
+The bogus spiritualistic séance to frighten the culprit into giving himself away.
+Forged fingerprints.
+The dummy-figure alibi.
+The dog that does not bark and thereby reveals the fact that the intruder is familiar.
+The final pinning of the crime on a twin or a relative who looks exactly like the suspected but innocent person.
+The hypodermic syringe and the knockout drops.
+The commission of the murder in a locked room after the police have actually broken in.
+The word association test for guilt.
+The cipher or code letter, which is eventually unraveled by the sleuth.
+Type: Rules
+
+ID: 21
+Name: Knox's First
+Description: It is forbidden for the culprit to be anyone not mentioned in the early part of the story.
+Type: Rules
+
+ID: 22
+Name: Knox's Second
+Description: It is forbidden for supernatural agencies to be employed as a detective technique.
+Type: Rules
+
+ID: 23
+Name: Knox's Third
+Description: It is forbidden for hidden passages to exist.
+Type: Rules
+
+ID: 24
+Name: Knox's Fourth
+Description: It is forbidden for unknown drugs or hard to understand scientific devices to be used.
+Type: Rules
+
+ID: 25
+Name: Knox's Fifth
+Description: (not included)
+Type: Rules
+
+ID: 26
+Name: Knox's Sixth
+Description: It is forbidden for accident or intuition to be employed as a detective technique.
+Type: Rules
+
+ID: 27
+Name: Knox's Seventh
+Description: It is forbidden for the detective to be the culprit.
+Type: Rules
+
+ID: 28
+Name: Knox's Eighth
+Description: It is forbidden for the case to be resolved with clues that are not presented.
+Type: Rules
+
+ID: 29
+Name: Knox's Ninth
+Description: It is permitted for observers to let their own conclusions and interpretations be heard.
+Type: Rules
+
+ID: 30
+Name: Knox's Tenth
+Description: It is forbidden for a character to disguise themselves without any clues.
+Type: Rules
+
+ID: 31
+Name: Blue Truth
+Description: A style of truth. Any text written in blue can be assumed to be true unless directly refuted by a Red Truth or Golden Truth.
+Type: Glossary
+
+ID: 32
+Name: Creator
+Description: Creator is the highest possible level of existence, surpassing the concept of "witches" entirely. A Creator can create anything out of nothing and is beyond the boundaries of existence. As such, they cannot experience life or death. It is implied that a Creator is akin to God. The only known Creator is Featherine Augustus Aurora.
+Type: Glossary
+
+ID: 33
+Name: Detective's Authority
+Description: A genre convention stating that the detective must not be hindered in the discovery of any clues necessary to a solution. The detective's inspection must be allowed to be so thorough that it obviates any Devil's Proof. The concept of Detective's Authority is never explained to Battler Ushiromiya, so Battler never properly makes use of it until he sees Erika Furudo use Detective's Authority once she takes over as detective. The existence of Detective's Authority is in compliance with Knox's Seventh and Van Dine's First.
+Type: Glossary
+
+ID: 34
+Name: Devil's Proof
+Description: A logical dilemma stating that, though evidence will disprove the existence of something, lack of evidence will not disprove it. Put simply, absence of evidence is not evidence of absence. The phrase "Devil's Proof" is often used as shorthand for Battler Ushiromiya's style of fighting.
+Type: Glossary
+
+ID: 35
+Name: Endless Nine
+Description: Endless Nine refers to the concept of blanket refusal to acknowledge the supernatural.
+Type: Glossary
+
+ID: 36
+Name: Episode
+Description: An Episode refers to a single self-contained story that takes place within the Umineko no Naku Koro ni sound novels. Each episode consists of a main story, a Tea Party, and a ????.
+Type: Glossary
+
+ID: 37
+Name: Fragment
+Description: Fragments are bits of light that represent infinite parallel worlds with infinitely different possibilities. Certain witches can use fragments to hop between different game boards.
+Type: Glossary
+
+ID: 38
+Name: Furniture
+Description: Furniture refers to any servant created by those with magical abilities.
+Type: Glossary
+
+ID: 39
+Name: Game
+Description: Supernatural beings in Umineko no Naku Koro ni play "games" using certain setpieces as the game boards. The game is often paralleled with chess and consists of two opposing sides attempting to solve a murder mystery. One side, the Witch Side, attempts to prove that the murders could only be committed by witches. The other side, the Human Side, instead attempts to prove that it is possible for a human culprit to commit the murders and effectively deny the existence of magic within the game board.
+Type: Glossary
+
+ID: 40
+Name: Game Board
+Description: Game Boards in Umineko no Naku Koro ni refer almost exclusively to instances of Rokkenjima on the 4th, 5th, and 6th of October 1986. The island is used by supernatural beings as a means of entertainment.
+Type: Glossary
+
+ID: 41
+Name: Game Master
+Description: The Game Master of any given game is the one crafting the murder mystery. The Game Master must avoid creating Logic Errors in a game else the game will be destroyed.
+Type: Glossary
+
+ID: 42
+Name: Golden Truth
+Description: A style of truth that can only be used by the Game Master. Anything written in gold is definitively true.
+Type: Glossary
+
+ID: 43
+Name: Hempel's Raven
+Description: A logical dilemma illustrating a logical contradiction in the definition of "evidence." The titular example for the dilemma is that, in order to prove all ravens are black, one may observe either a black raven or a non-black non-raven, and both constitute as evidence (By this logic, a black raven and a red apple are both evidence that all ravens are black). Typically used as a counter to the Devil's Proof.
+Type: Glossary
+
+ID: 44
+Name: Logic Error
+Description: A logic error occurs when there is a contradiction in the tale created by the Game Master. After the discovery of a Logic Error, the Game Master can choose to either shamefully admit their mistake or attempt to fix it. If the Game Master admits the mistake, then the game is destroyed. If the Game Master tries to fix the game, then they will be submitted to an eternity of trying to fix the Logic Error. Due to the complex nature of these errors, this is viewed as a type of torture.
+Type: Glossary
+
+ID: 45
+Name: Meta-World
+Description: A dimension separate from the reality of the game boards. The Meta-World is occupied by the Game Master and the players of any given game.
+Type: Glossary
+
+ID: 46
+Name: Piece
+Description: A term that refers to any character that exists on the game board. Characters in the Meta-World are typically not referred to as "pieces," though pieces are occasionally brought to the Meta-World.
+Type: Glossary
+
+ID: 47
+Name: Purple Declaration
+Description: A declarative statement and unique style of truth. Any purple statement is unquestionably true unless spoken by the culprit of the game.
+Type: Glossary
+
+ID: 48
+Name: Red Truth
+Description: A style of truth. Any player on the Witch Side can present a Red Truth, and it is assumed to be true without requiring proof.
+Type: Glossary
+
+ID: 49
+Name: Turning the board around
+Description: A phrase often repeated by Kyrie and Battler Ushiromiya. The concept of turning the board around is based in chess. Essentially, the phrase means to consider the situation from the opponent's perspective. The flaw in the phrase comes from the core difference between chess and the games of Umineko no Naku Koro ni. In chess, both sides have the same goal (capturing the opposing king), but in the games of Umineko no Naku Koro ni, the Witch Side and Human Side have different goals. As such, without a true understanding of the opponent's motives, nothing can be gained from "turning the board around."
+Type: Glossary
+
+ID: 50
+Name: Voyager Witch
+Description: Voyager witches are a certain type of witch who can freely move between fragments. The only known voyager witches are Bernkastel and Lambdadelta.
+Type: Glossary
