@@ -44,6 +44,18 @@ stDB.soundtrackByEpisode = (episode) => {
     })
 }
 
+stDB.soundtrackByEpisodeRoute = (episodeIds) => {
+    const query = `SELECT * FROM uminekoapi.soundtrack WHERE episode IN (?)`;
+    return new Promise((resolve, reject) => {
+      pool.query(query, [episodeIds], (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      });
+    });
+  };
+
 
 stDB.soundtrackByQuery = (queryParams) => {
     // This intialization of query statement allows characters?, where no 

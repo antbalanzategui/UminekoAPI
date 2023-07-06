@@ -2,6 +2,8 @@ const queryValidator = require('../utils/queryValidator');
 const validateQuery = queryValidator.validateQuery;
 const relationsDB = require('../db/relationsDB');
 const triviaDB = require('../db/triviaDB');
+const stDB = require('../db/soundtrackDB');
+const imagesDB = require('../db/imagesDB');
 
 async function handleQuery(req, res, next, queryFunction, queryObj, querySchema) {
     const errors = validateQuery(queryObj, querySchema);
@@ -45,6 +47,28 @@ async function handleQuery(req, res, next, queryFunction, queryObj, querySchema)
             character.relationships = relationships.filter((relationship) => relationship.charId === character.id);
           });
         }
+      }
+
+      if (queryObj.soundtrack) {
+        if (queryObj.soundtrack === 'true') {
+          const episodeIds = results.map((episode) => episode.id);
+          const soundtracks = await stDB.soundtrackByEpisodeRoute(episodeIds);
+          results.forEach((episode) => {
+            episode.soundtrack = soundtracks.filter((soundtrack) => soundtrack.episode === episode.id);
+          })
+        }
+      }
+
+      if (queryObj.images) {
+        if (queryObj.images === 'true') {
+          const episodeIds = results.map((episode) => episode.id);
+          const images = await imagesDB.imageByEpisodeRoute(episodeIds);
+          results.forEach((episode) => {
+            episode.image = images.filter((image) => image.episode === episode.id);
+          }) 
+        }
+
+
       }
       
 

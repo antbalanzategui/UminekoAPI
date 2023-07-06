@@ -8,6 +8,7 @@ const imageRouter = require('./routes/imagesRoutes');
 const triviaRouter = require('./routes/triviaRoutes');
 const relationsRouter = require('./routes/relationsRoutes');
 const informationRouter = require('./routes/informationRoutes');
+const episodeRouter = require('./routes/episodeRoutes');
 const app = express();
 const cors = require('cors')
 const path = require('path');
@@ -22,6 +23,7 @@ app.use('/api/images', imageRouter);
 app.use('/api/trivia', triviaRouter);
 app.use('/api/relations', relationsRouter);
 app.use('/api/info', informationRouter);
+app.use('/api/episode', episodeRouter);
 
 
 app.listen(process.env.PORT || '3001', () => {

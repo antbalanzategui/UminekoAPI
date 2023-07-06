@@ -36,6 +36,18 @@ imagesDB.imageByEpisode = (episode) => {
     })
 }
 
+imagesDB.imageByEpisodeRoute = (episodeIds) => {
+  const query = `SELECT * FROM uminekoapi.images WHERE episode IN (?)`;
+  return new Promise((resolve, reject) => {
+    pool.query(query, [episodeIds], (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(results);
+    });
+  });
+};
+
 imagesDB.imageByQuery = (queryParams) => {
     let query = "SELECT * FROM uminekoapi.images WHERE 1 = 1";
     let values = [];
