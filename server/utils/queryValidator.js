@@ -16,6 +16,11 @@ function validateQuery(query, querySchema) {
       continue;
     }
 
+    if (Array.isArray(query[param]) && rules.type !== 'array') {
+      errors.push(`${param} cannot have duplicates`);
+      continue
+    }
+
     // Check if parameter is required and missing
     if (rules.required && (query[param] === undefined || query[param] === '')) {
       errors.push(`${param} is required`);
