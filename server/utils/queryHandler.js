@@ -21,7 +21,7 @@ async function handleQuery(req, res, next, queryFunction, queryObj, querySchema)
         });
         return;
       }
-  
+
       if (queryObj.random) {
         // Shuffle the results array randomly
         let shuffledResults = results.sort(() => Math.random() - 0.5);
@@ -30,7 +30,7 @@ async function handleQuery(req, res, next, queryFunction, queryObj, querySchema)
       }
       
       if (queryObj.trivia) {
-        if (queryObj.trivia === 'true') {
+        if (queryObj.trivia === 'true' && results.length != 0) {
           const characterIds = results.map((character) => character.id);
           const trivia = await triviaDB.triviaByCharacters(characterIds);
           results.forEach((character) => {
@@ -39,7 +39,7 @@ async function handleQuery(req, res, next, queryFunction, queryObj, querySchema)
         }
       }
 
-      if (queryObj.relationships) {
+      if (queryObj.relationships && results.length != 0) {
         if (queryObj.relationships === 'true') {
           const characterIds = results.map((character) => character.id);
           const relationships = await relationsDB.relationsByCharacters(characterIds);
@@ -48,8 +48,7 @@ async function handleQuery(req, res, next, queryFunction, queryObj, querySchema)
           });
         }
       }
-
-      if (queryObj.soundtrack) {
+      if (queryObj.soundtrack && results.length != 0) {
         if (queryObj.soundtrack === 'true') {
           const episodeIds = results.map((episode) => episode.id);
           const soundtracks = await stDB.soundtrackByEpisodeRoute(episodeIds);
@@ -58,8 +57,7 @@ async function handleQuery(req, res, next, queryFunction, queryObj, querySchema)
           })
         }
       }
-
-      if (queryObj.images) {
+      if (queryObj.images && results.length != 0) {
         if (queryObj.images === 'true') {
           const episodeIds = results.map((episode) => episode.id);
           const images = await imagesDB.imageByEpisodeRoute(episodeIds);
@@ -67,11 +65,12 @@ async function handleQuery(req, res, next, queryFunction, queryObj, querySchema)
             episode.image = images.filter((image) => image.episode === episode.id);
           }) 
         }
-
-
       }
       
-
+      // Consider refactoring this
+      // So thtat you do not have to check results.length for every possible attribute
+      // But rather check results at beginning 
+      // Seperate if from else...
       if (results.length === 0) {
         res.status(200).json({ message: 'No results found.' });
       } else {
