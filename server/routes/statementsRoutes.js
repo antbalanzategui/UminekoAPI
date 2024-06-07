@@ -19,6 +19,30 @@ router.get('/id=:id?', async (req, res, next) => {
     await handleQuery(req, res, next, db.statementsById.bind(null, req.params.id), req.params, statementsSchema);
   });
 
+  router.get('/type=:type?', async(req, res, next) => {
+    if (!req.params.type) {
+      return res.status(400).json({ error: 'Missing "type" parameter. Please include an "type" parameter in the request URL.' })
+    }
+    await handleQuery(req, res, next, db.statementsByType.bind(null, req.params.type), req.params, statementsSchema);
+  });
+
+
+  router.get('/episode=:episode?', async (req, res, next) => {
+    if (!req.params.episode) {
+        return res.status(400).json({ error: 'Missing "episode" parameter. Please include an "episode" parameter in the request URL.' })
+      }
+      req.params.episode = parseInt(req.params.episode);
+      await handleQuery(req, res, next, db.statementsByEpisode.bind(null, req.params.episode), req.params, statementsSchema);
+  });
+
+
+  router.get('/', convertToInt, async (req, res, next) => {
+    await handleQuery(req, res, next, db.statementsByQuery, req.query, statementsSchemaQuery);
+  });
+
+
+
+
 
 
 module.exports = router;
