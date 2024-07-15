@@ -10,6 +10,10 @@ const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
 const imageSchemaQuery = imageSchemas.imageSchemaQuery;
 
+const checkApiKey = require('../middleware/apiKeyMiddleware');
+
+router.use(checkApiKey);
+
 
 router.get('/id=:id?', async (req, res, next) => {
     if (!req.params.id) {
@@ -35,7 +39,7 @@ router.get('/episode=:episode?', async (req, res, next) => {
       await handleQuery(req, res, next, db.imageByEpisode.bind(null, req.params.episode), req.params, imageSchema);
 });
 
-// localhost:3001/api/images?characters[]=Battler&characters[]=123&characters[]=Ange&episodeStart=8&type=Graphic&idStart=46
+// localhost:3001/api/images?characters[]=Battler&characters[]=Ange&episodeStart=1
 router.get('/', convertToInt, async (req, res, next) => {
     await handleQuery(req, res, next, db.imageByQuery, req.query, imageSchemaQuery);
     });

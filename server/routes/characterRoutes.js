@@ -8,6 +8,7 @@ const convertToInt = paramConverter.convertToInt;
 const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
 const characterSchemaQuery = characterSchemas.characterSchemaQuery;
+const checkApiKey = require('../middleware/apiKeyMiddleware'); // Import the middleware
 
 
 // This file contains essentially everything 
@@ -22,6 +23,10 @@ const characterSchemaQuery = characterSchemas.characterSchemaQuery;
 // the reason this is done is to easily evaluate inequalities with the parameter
 
 // MiddleWare for the /id, utilizes querySchema (check utils for more info)
+
+router.use(checkApiKey);
+
+
 router.get('/id=:id?', async (req, res, next) => {
 
   if (!req.params.id) {

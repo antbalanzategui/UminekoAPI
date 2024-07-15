@@ -9,6 +9,10 @@ const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
 const soundTrackSchemaQuery = soundTrackSchemas.soundTrackSchemaQuery;
 
+const checkApiKey = require('../middleware/apiKeyMiddleware');
+
+router.use(checkApiKey);
+
 // This establishes the data which we will get when we call soundtrack/id=? 
 // we will fetch data from the database of the soundtrack where id is = ?
 router.get('/id=:id?', async (req, res, next) => {

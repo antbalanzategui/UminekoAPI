@@ -10,6 +10,10 @@ const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
 const informationSchemaQuery = informationSchemas.informationSchemaQuery;
 
+const checkApiKey = require('../middleware/apiKeyMiddleware');
+
+router.use(checkApiKey);
+
 
 router.get('/id=:id?', async (req, res, next) => {
     if (!req.params.id) {

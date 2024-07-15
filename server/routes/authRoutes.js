@@ -39,8 +39,8 @@ router.post('/signup', (req, res) => {
           });
         }
 
-        const sqlInsertUser = 'INSERT INTO users (name, email, password, apikey) VALUES (?, ?, ?, ?)';
-        pool.query(sqlInsertUser, [username, email, hash, apiKey], (err, result) => {
+        const sqlInsertUser = 'INSERT INTO users (name, email, password, apikey, api_call_limit, created_at) VALUES (?, ?, ?, ?, ?, NOW())';
+        pool.query(sqlInsertUser, [username, email, hash, apiKey, 100], (err, result) => {
           if (err) throw err;
           res.status(201).send('User registered with API key');
         });

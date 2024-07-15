@@ -9,8 +9,9 @@ const convertToInt = paramConverter.convertToInt;
 const queryHandler = require('../utils/queryHandler');
 const handleQuery = queryHandler.handleQuery;
 const episodeSchemaQuery = episodeSchemas.episodeSchemaQuery;
+const checkApiKey = require('../middleware/apiKeyMiddleware');
 
-
+router.use(checkApiKey);
 
 router.get('/id=:id?', async (req, res, next) => {
     if (!req.params.id) {
