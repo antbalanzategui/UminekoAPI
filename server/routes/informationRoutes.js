@@ -12,7 +12,7 @@ const informationSchemaQuery = informationSchemas.informationSchemaQuery;
 
 const checkApiKey = require('../middleware/apiKeyMiddleware');
 
-router.use(checkApiKey);
+router.use(checkApiKey('information'));
 
 
 router.get('/id=:id?', async (req, res, next) => {

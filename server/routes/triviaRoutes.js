@@ -12,9 +12,7 @@ const triviaSchemaQuery = triviaSchemas.triviaSchemaQuery;
 
 const checkApiKey = require('../middleware/apiKeyMiddleware');
 
-router.use(checkApiKey);
-
-
+router.use(checkApiKey('trivia'));
 
 router.get('/id=:id?', async (req, res, next) => {
     if (!req.params.id) {

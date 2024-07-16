@@ -12,8 +12,7 @@ const imageSchemaQuery = imageSchemas.imageSchemaQuery;
 
 const checkApiKey = require('../middleware/apiKeyMiddleware');
 
-router.use(checkApiKey);
-
+router.use(checkApiKey('images'));
 
 router.get('/id=:id?', async (req, res, next) => {
     if (!req.params.id) {

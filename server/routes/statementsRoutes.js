@@ -11,7 +11,7 @@ const statementsSchemaQuery = statementsSchemas.statementsSchemaQuery;
 
 const checkApiKey = require('../middleware/apiKeyMiddleware');
 
-router.use(checkApiKey);
+router.use(checkApiKey('statements'));
 
 
 router.get('/id=:id?', async (req, res, next) => {

@@ -11,7 +11,7 @@ const soundTrackSchemaQuery = soundTrackSchemas.soundTrackSchemaQuery;
 
 const checkApiKey = require('../middleware/apiKeyMiddleware');
 
-router.use(checkApiKey);
+router.use(checkApiKey('soundtrack'));
 
 // This establishes the data which we will get when we call soundtrack/id=? 
 // we will fetch data from the database of the soundtrack where id is = ?

@@ -11,7 +11,7 @@ const relationsSchemaQuery = relationsSchemas.relationsSchemaQuery;
 
 const checkApiKey = require('../middleware/apiKeyMiddleware');
 
-router.use(checkApiKey);
+router.use(checkApiKey('relations'));
 
 
 

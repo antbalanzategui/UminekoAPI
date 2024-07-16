@@ -24,7 +24,7 @@ const checkApiKey = require('../middleware/apiKeyMiddleware'); // Import the mid
 
 // MiddleWare for the /id, utilizes querySchema (check utils for more info)
 
-router.use(checkApiKey);
+router.use(checkApiKey('characters'));
 
 
 router.get('/id=:id?', async (req, res, next) => {
