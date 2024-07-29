@@ -1,4 +1,5 @@
 const pool = require('../db/dbConnection');
+const bcrypt = require('bcryptjs');
 
 const checkApiKey = (queryType) => {
   return async (req, res, next) => {
@@ -8,15 +9,15 @@ const checkApiKey = (queryType) => {
       return res.status(403).json({ error: 'API key is required' });
     }
 
-    const sqlCheckApiKey = 'SELECT * FROM users WHERE apikey = ? AND api_call_limit > 0';
-    pool.query(sqlCheckApiKey, [apiKey], (err, results) => {
+    const sqlCheckApiKey = 'SELECT * FROM users WHERE api_call_limit > 0 AND activated = 1';
+    pool.query(sqlCheckApiKey, (err, results) => {
       if (err) throw err;
 
-      if (results.length > 0) {
-        const user = results[0];
+      const user = results.find(u => bcrypt.compareSync(apiKey, u.apikey));
 
+      if (user) {
         const sqlDecrementApiCallLimit = 'UPDATE users SET api_call_limit = api_call_limit - 1 WHERE apikey = ?';
-        pool.query(sqlDecrementApiCallLimit, [apiKey], (err, updateResults) => {
+        pool.query(sqlDecrementApiCallLimit, [user.apikey], (err, updateResults) => {
           if (err) throw err;
 
           req.user = user; // Attach the user to the request object
@@ -39,7 +40,7 @@ const checkApiKey = (queryType) => {
           next();
         });
       } else {
-        return res.status(403).json({ error: 'Invalid or exhausted API key' });
+        return res.status(403).json({ error: 'Invalid or exhausted API key or account not activated' });
       }
     });
   };
