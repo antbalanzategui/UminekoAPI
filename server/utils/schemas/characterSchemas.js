@@ -80,6 +80,14 @@ const characterSchema = {
       type: 'string',
       required: true,
       elementType: 'boolean',
+    },
+    random: {
+      min: 1,
+      type: 'number',
+      positive: true,
+      integer: true,
+      required: true,
+      max: 63
     }
 
   };

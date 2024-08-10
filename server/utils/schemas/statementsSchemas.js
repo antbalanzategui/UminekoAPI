@@ -58,6 +58,14 @@ const statementsSchemaQuery = {
     min: 1,
     max: 8,
     required: true,
+  },
+  random: {
+    min: 1,
+    type: 'number',
+    positive: true,
+    integer: true,
+    required: true,
+    max: 2578
   }
 }
 
